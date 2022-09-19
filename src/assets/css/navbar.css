@@ -14,8 +14,13 @@
 
 
 .navbar-option:hover {
-    background-color: rgb(15, 15, 21);
+    background-color: rgb(28, 28, 33);
+    cursor:pointer;
 }
+.navbar-option:active {
+    background-color: rgb(15, 14, 17);
+}
+
 
 
 /* .vborder {
