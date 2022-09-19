@@ -1,10 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import logo from './assets/images/logo.svg';
+import './assets/css/App.css';
+
+import HomeSection from './components/HomeSection';
+import Navbar from './components/Navbar';
+
 
 function App() {
   return (
     <div className="App">
+      {/* 
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -18,7 +24,17 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> 
+      */}
+        <Navbar />
+      <HomeSection />
+
+
+{/* 
+      <DemoSection />
+      <DemoSection />
+      <DemoSection />
+ */}
     </div>
   );
 }
