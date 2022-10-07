@@ -4,38 +4,18 @@ import { Card, CardGroup, Col, Container, ListGroup, ListGroupItem, Row } from "
 
 import '../../assets/css/home.css';
 
-import FrameworkSection from "./FrameworkSection";
 import LanguageSection from "./LanguageSection";
+import FrameworkSection from "./FrameworkSection";
+import GithubExtension from "./GithubExtension";
 
-import {update, get_repos_with_latest_commit} from '../../helpers/api/github'
 
 
 export const HomeSection = () => {
 
-    const [repos, setRepos] = useState({}) 
-
-    /**
-     * Make a request to the database to get the latest worked on repos.
-     * Store this state to use in JSX
-     */
-    const update_github_section = () => {
-        get_repos_with_latest_commit(1).then(function(response) {
-            // console.log(response.status)
-            // console.log(response.data[0].commits)
-            setRepos(response.data)
-        })
-    }
-    // Update the github API database every hour.
-
-
-    useEffect(() => {
-        update_github_section()
-    }, [])
-
     return (
-        <Container style={{
+        <Container className='bg-dark' style={{
             width: '100vw', minWidth: '100vw', height: '80vh', 
-            }}>
+        }}>
             
             <Row >
                 <Col /> {/* Spacing Column */}
@@ -72,9 +52,11 @@ export const HomeSection = () => {
             <Row>
                 {/* GITHUB SLIDER SECTION */}
                 <Col className='col-12'>
-                    GITHUB EXTENSION
+                    <GithubExtension />
                 </Col>
             </Row>
+
+            <Row className='mb-5'></Row>
 
 
         </Container>
