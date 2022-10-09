@@ -14,7 +14,7 @@ export const HomeSection = () => {
 
     return (
         <Container className='bg-dark' style={{
-            width: '100vw', minWidth: '100vw', height: '80vh', 
+            // width: '100vw', minWidth: '100vw', height: '80vh', 
         }}>
             
             <Row >
@@ -22,11 +22,11 @@ export const HomeSection = () => {
 
                 <Col className='col-8'>
                     <Card className='bg-dark text-white square border border-success mt-5'>
-                        <Card.Header style={{fontSize: 24}} className='my-5'>Developer Portfolio by Brandon Nadeau</Card.Header>
+                        <Card.Header style={{fontSize: 24}} className='my-5'>Brandon Nadeau</Card.Header>
                         <Card className='bg-dark text-white square border border-success py-5'>
                             <Card.Body style={{fontSize: 18}} className='py-5'>
                                     <Row className='py-5'>
-                                        <Col className='py-5'>Over 10+ years as Hobbyist!</Col>
+                                        <Col className='py-5'>Full Stack Developer</Col>
                                     </Row>
                                         
                             </Card.Body>
@@ -56,7 +56,7 @@ export const HomeSection = () => {
                 </Col>
             </Row>
 
-            <Row className='mb-5'></Row>
+            <Row className='mb-5 mx-5'></Row>
 
 
         </Container>
