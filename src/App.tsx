@@ -8,6 +8,7 @@ import PortfolioNavbar from './components/Navbars/PorfolioNavbar';
 import { ProjectSection } from './components/ProjectSection/ProjectSection';
 
 
+
 function App() {
   return (
     <div className="App">
