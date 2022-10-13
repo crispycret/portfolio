@@ -3,9 +3,9 @@ import React from 'react';
 import logo from './assets/images/logo.svg';
 import './assets/css/App.css';
 
-import HomeSection from './components/HomeSection/HomeSection';
+import Home from './pages/HomePage';
 import PortfolioNavbar from './components/Navbars/PorfolioNavbar';
-import { ProjectSection } from './components/ProjectSection/ProjectSection';
+import { ProjectSection } from './components/Home/Project/ProjectSection';
 
 
 
@@ -14,8 +14,7 @@ function App() {
     <div className="App">
 
       <PortfolioNavbar />
-      <HomeSection />
-      <ProjectSection />
+      <Home />
 
     </div>
   );

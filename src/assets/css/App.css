@@ -2,37 +2,96 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* 
+.App::before {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 60%;
+  right: 0;
+  width: 40%;
+  height: 100vh;
+  background: #008dff;
+  border-radius: 50%;
+  transform-origin: bottom;
+}
+ */
+
+ /* #LandingSection::before {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  top: 10vh;
+  left: 25vw;
+  right: 0;
+  width: 25vh;
+  height: 25vh;
+  background: #008dff;
+  border-radius: 50%;
+  transform-origin: bottom;
+} */
+
+#bubble-1::before {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  top: 20vh;
+  left: 15vw;
+  right: 0;
+  width: 25vh;
+  height: 25vh;
+  background: linear-gradient(to right, rgb(234, 164, 102), rgba(118, 75, 162, 1));
+  border-radius: 50%;
+  transform-origin: bottom;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#bubble-2::before {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  top: 35vh;
+  left: 25vw;
+  right: 0;
+  width: 25vh;
+  height: 25vh;
+  background: linear-gradient(to right, rgb(162, 75, 152), rgb(102, 234, 135));
+  border-radius: 50%;
+  transform-origin: bottom;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+#bubble-3::before {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  top: 20vh;
+  left: 15vw;
+  right: 0;
+  width: 25vh;
+  height: 25vh;
+  background: linear-gradient(to right, rgba(102, 126, 234, 1), rgba(118, 75, 162, 1));
+  border-radius: 50%;
+  transform-origin: bottom;
 }
 
-.App-link {
-  color: #61dafb;
+#bubble-4::before {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  top: 35vh;
+  left: 25vw;
+  right: 0;
+  width: 25vh;
+  height: 25vh;
+  background: #3cff00;
+  border-radius: 50%;
+  transform-origin: bottom;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+#github-ext {
+  margin: 0;
+  background: linear-gradient(to right, rgba(102, 126, 234, 1), rgba(118, 75, 162, 1));
 }
+
