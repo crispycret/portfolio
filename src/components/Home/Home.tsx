@@ -17,6 +17,7 @@ export const Home = () => {
 
             {isMobile && <>
                 <HomeHeaderMobile />
+                <div className="py-1"></div>
                 <GithubExtensionMobile />
             </>}
 

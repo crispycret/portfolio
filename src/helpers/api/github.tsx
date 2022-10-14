@@ -31,6 +31,7 @@ export interface Repo {
     author: string,
     created_at: string,
     commits: Array<Commit>,
+    html_url: string
 }
 
 export interface Commit {
@@ -56,6 +57,7 @@ export interface GithubInterface {
     client: AxiosInstance; 
     create_client: () => void; 
     get_last_worked_on_repos: (limit?: number) => Promise<AxiosResponse<any, any>>; 
+    get_repo_by_name: (name: string) => Promise<AxiosResponse<any, any>>; 
 }
 
 export const Github = () => {
@@ -109,6 +111,11 @@ export const Github = () => {
         }
         return await axios(config)
     }
+
+    const get_repo_by_name = async (name: string) => {
+            let res = await client.get(`/repo/${name}`) 
+            return res
+    }
     
     
 
@@ -119,7 +126,8 @@ export const Github = () => {
         client_config,
         client,
         create_client,
-        get_last_worked_on_repos
+        get_last_worked_on_repos,
+        get_repo_by_name
     } as GithubInterface)
 }
 

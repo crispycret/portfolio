@@ -1,8 +1,11 @@
-import { Col, Container, Row } from "react-bootstrap"
-import Project from "./Project"
+import { Card, Col, Container, Row } from "react-bootstrap"
+import {Project, ProjectMobile} from "./Project"
 
 import imageUrlGithubAPI from '../../assets/images/projects/github-api/sample.png'
 import useIsMobile from "../../helpers/hooks/useIsMobile";
+import GradientText from "../../helpers/utils/GradientText";
+import { useEffect } from "react";
+import github, { Github } from "../../helpers/api/github";
 
 export const Projects = () => {
 
@@ -10,7 +13,31 @@ export const Projects = () => {
 
     const projects = [
         {
-            name: "github-api",
+            name: "Github API Buffer",
+            summary: "A read only flask api for a single user. The API acts as a buffer between the true Github API and allows faster data retriveals by storing the users github data in a seperate database.",
+            completed: true,
+            imageUrl: imageUrlGithubAPI,
+            githubUrl: 'https://github.com/crispycret/github-api',
+            websiteUrl: 'https://github.com/crispycret/github-api',
+        },
+        {
+            name: "Fractal Engine Web App",
+            summary: "A read only flask api for a single user. The API acts as a buffer between the true Github API and allows faster data retriveals by storing the users github data in a seperate database.",
+            completed: false,
+            imageUrl: imageUrlGithubAPI,
+            githubUrl: 'https://github.com/crispycret/FractalEngineWebApp',
+            websiteUrl: 'https://github.com/crispycret/FractalEngineWebApp',
+        },
+        {
+            name: "Fractal Engine Android App",
+            summary: "A read only flask api for a single user. The API acts as a buffer between the true Github API and allows faster data retriveals by storing the users github data in a seperate database.",
+            completed: false,
+            imageUrl: imageUrlGithubAPI,
+            githubUrl: 'https://github.com/crispycret/AndroidFractalEngine',
+            websiteUrl: 'https://github.com/crispycret/AndroidFractalEngine',
+        },
+        {
+            name: "Blog",
             summary: "A read only flask api for a single user. The API acts as a buffer between the true Github API and allows faster data retriveals by storing the users github data in a seperate database.",
             completed: false,
             imageUrl: imageUrlGithubAPI,
@@ -18,22 +45,28 @@ export const Projects = () => {
             websiteUrl: 'https://github.com/crispycret/github-api',
         },
         {
-            name: "Fractal Engine Web",
+            name: "Flask - User Auth Sample",
             summary: "A read only flask api for a single user. The API acts as a buffer between the true Github API and allows faster data retriveals by storing the users github data in a seperate database.",
-            completed: false,
+            completed: true,
             imageUrl: imageUrlGithubAPI,
-            githubUrl: 'https://github.com/crispycret/github-api',
-            websiteUrl: 'https://github.com/crispycret/github-api',
+            githubUrl: 'https://github.com/crispycret/flask-user-auth',
+            websiteUrl: 'https://github.com/crispycret/flask-user-auth',
         },
-        {
-            name: "Fractal Engine Android",
-            summary: "A read only flask api for a single user. The API acts as a buffer between the true Github API and allows faster data retriveals by storing the users github data in a seperate database.",
-            completed: false,
-            imageUrl: imageUrlGithubAPI,
-            githubUrl: 'https://github.com/crispycret/github-api',
-            websiteUrl: 'https://github.com/crispycret/github-api',
-        },
+        
     ]
+
+
+    const get_updated_time_for_projects = () => {
+        for (const project of projects) {
+            let split = project.githubUrl.split('/')
+            let repo_name = split[split.length-1]
+            github.get_repo_by_name(repo_name)
+        }
+    }
+
+    useEffect(() => {
+        get_updated_time_for_projects()
+    }, [])
 
 
     return (
@@ -41,30 +74,36 @@ export const Projects = () => {
         <>
             { isMobile &&
                 <>
-                    <Container className='my-5'>
-                        <Row><Col><Project {...projects[0]}/></Col></Row>
-                        <Row><Col><Project {...projects[1]}/></Col></Row>
-                        <Row><Col><Project {...projects[2]}/></Col></Row>
-                        <Row><Col><Project {...projects[0]}/></Col></Row>
-                        <Row><Col><Project {...projects[0]}/></Col></Row>
-                        <Row><Col><Project {...projects[0]}/></Col></Row>
+                    <Container id='projects' className='mt-3'>
+                        <Container className='text-white' style={{fontSize:'20px'}}>
+                            <GradientText text='Projects' fontSize={18} />
+                                {/* Projects */}
+                            </Container>
+
+                        <Row><Col><ProjectMobile {...projects[0]}/></Col></Row>
+                        <Row><Col><ProjectMobile {...projects[1]}/></Col></Row>
+                        <Row><Col><ProjectMobile {...projects[2]}/></Col></Row>
+                        <Row><Col><ProjectMobile {...projects[4]}/></Col></Row>
+                        {/* <Row><Col><ProjectMobile {...projects[0]}/></Col></Row> */}
+                        {/* <Row><Col><ProjectMobile {...projects[0]}/></Col></Row> */}
                     </Container>
                 </>
             }
 
             { isNotMobile &&
+                
                 <>
                     <Container className='my-5'>
-                        <Row>
+                        {/* <Row>
                             <Col><Project {...projects[0]}/></Col>
                             <Col><Project {...projects[1]}/></Col>
                             <Col><Project {...projects[2]}/></Col>
                         </Row>
                         <Row>
+                            <Col><Project {...projects[3]}/></Col>
+                            <Col><Project {...projects[4]}/></Col>
                             <Col><Project {...projects[0]}/></Col>
-                            <Col><Project {...projects[0]}/></Col>
-                            <Col><Project {...projects[0]}/></Col>
-                        </Row>
+                        </Row> */}
                     </Container>
                 </>
             }

@@ -2,9 +2,42 @@
   text-align: center;
 }
 
+#logo {
+  animation-name: spin;
+  animation-duration: 15000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+  /* transform: rotate(3deg); */
+   /* transform: rotate(0.3rad);/ */
+   /* transform: rotate(3grad); */ 
+   /* transform: rotate(.03turn);  */
+}
+
+.header-bg {
+  background: linear-gradient(to right, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+}
+
 
 #github-ext {
   margin: 0;
   background: linear-gradient(to right, rgba(102, 126, 234, 1), rgba(118, 75, 162, 1));
 }
 
+
+
+
+#projects {
+  color: linear-gradient(to right, rgba(102, 126, 234, 1), rgba(118, 75, 162, 1));
+}
+
+
+
+
+@keyframes spin {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
+}
