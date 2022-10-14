@@ -1,5 +1,5 @@
 import { Card, ListGroup, ListGroupItem } from "react-bootstrap"
-import useIsMobile from "../../../helpers/hooks/useIsMobile"
+import useIsMobile from "../../helpers/hooks/useIsMobile"
 
 
 

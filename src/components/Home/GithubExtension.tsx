@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Card, Col, Container, ListGroup, ListGroupItem, Row } from "react-bootstrap";
 import { FaGithub, FaGithubSquare } from "react-icons/fa";
 
-import Github from "../../../helpers/api/github";
-import {get_newest_commit, Repo, Commit} from "../../../helpers/api/github";
+import Github from "../../helpers/api/github";
+import {get_newest_commit, Repo, Commit} from "../../helpers/api/github";
 
 
 

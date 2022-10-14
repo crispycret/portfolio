@@ -6,7 +6,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
 
-export const PortfolioNavbar = () => {
+export const MyNavbar = () => {
   
       return (
         <Navbar expand="lg" bg="dark" variant="dark">
@@ -42,4 +42,4 @@ export const PortfolioNavbar = () => {
 }
 
 
-export default PortfolioNavbar;
+export default MyNavbar;

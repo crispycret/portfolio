@@ -2,25 +2,19 @@ import { useEffect, useState } from "react";
 
 import { Card, CardGroup, Col, Container, ListGroup, ListGroupItem, Row } from "react-bootstrap";
 
-import '../assets/css/home.css';
+import Home from "../components/Home/Home";
+import Projects from "../components/Projects/Projects";
 
-import LanguageSection from "../components/Home/Landing/LanguageSection";
-import FrameworkSection from "../components/Home/Landing/FrameworkSection";
-import { LandingSection } from "../components/Home/Landing/LandingSection";
-import { ProjectSection } from "../components/Home/Project/ProjectSection";
-
-
-
-export const Home = () => {
+export const HomePage = () => {
 
     return (
-        <Container id='home'>
-            <LandingSection />
-            <ProjectSection />
+        <Container id='home-page'>
+            <Home />
+            <Projects />
         </Container>
     )
 
 }
 
 
-export default Home;
+export default HomePage;

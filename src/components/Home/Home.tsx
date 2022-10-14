@@ -1,34 +1,32 @@
 import { useEffect, useState } from "react"
-
 import { Col, Container, Row } from "react-bootstrap"
 
-import useIsMobile from '../../../helpers/hooks/useIsMobile'
-import Github from "../../../helpers/api/github"
+import useIsMobile from '../../helpers/hooks/useIsMobile'
 
+import { HomeHeader, HomeHeaderMobile } from "./Header"
 import GithubExtension, {GithubExtensionMobile} from "./GithubExtension"
-import { LandingHeader, LandingHeaderMobile } from "./LandingHeader"
 
 
-export const LandingSection = () => {
+export const Home = () => {
 
     const [isMobile, isNotMobile] = useIsMobile()
    
 
     return (
-        <div id="LandingSection">
+        <div id="Home">
 
             {isMobile && <>
-                <div id='bubble-1' />
-                <div id='bubble-2' />
-                <LandingHeaderMobile />
+                <HomeHeaderMobile />
                 <GithubExtensionMobile />
             </>}
 
             {isNotMobile && <>
-                <LandingHeader />
+                <HomeHeader/>
                 <GithubExtension/>
             </>} 
 
         </div>
     )
 }
+
+export default Home;
