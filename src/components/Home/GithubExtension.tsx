@@ -2,35 +2,9 @@ import { useEffect, useState } from "react";
 import { Card, Col, Container, ListGroup, ListGroupItem, Row } from "react-bootstrap";
 import { FaGithub, FaGithubSquare } from "react-icons/fa";
 
-import Github from "../../../helpers/api/github";
-import {get_newest_commit, Repo, Commit} from "../../../helpers/api/github";
-
-
-
-
-const timeAgo = (date: string) => {
-    var time = Date.parse(date)
-    var seconds = Math.floor((Date.now() - time) / 1000);
-    var interval = seconds / 31536000;
-
-    if (interval > 1) return Math.floor(interval) + " years";
-    interval = seconds / 2592000;
-    
-    if (interval > 1) return Math.floor(interval) + " months";
-    interval = seconds / 86400;
-    
-    if (interval > 1) return Math.floor(interval) + " days";
-    interval = seconds / 3600;
-    
-    if (interval > 1) return Math.floor(interval) + " hours";
-    interval = seconds / 60;
-    
-    if (interval > 1) return Math.floor(interval) + " minutes";
-    return Math.floor(seconds) + " seconds";
-}
-
-
-
+import Github from "../../helpers/api/github";
+import {get_newest_commit, Repo, Commit} from "../../helpers/api/github";
+import { timeAgo } from "../../helpers/utils/time";
 
 
 export const GithubExtension = () => {
@@ -77,7 +51,7 @@ export const GithubExtension = () => {
     return (
         <>{ selectedRepo != null && selectedCommit != null &&
 
-            <Container id='github-ext' className='col-5 mx-auto my-2 border border-3 rounded border-dark text-black'>
+            <Container id='github-ext' className='col-5 mx-auto border border-3 rounded border-dark text-black'>
                 <Row>
                     <Col className='col-1'>
                         <Col className='mt-2'>
@@ -163,6 +137,7 @@ export const GithubExtensionMobile = () => {
         <>{ selectedRepo != null && selectedCommit != null &&
 
             <Container id='github-ext' className='ms-0 ps-0 my-2 border rounded border-3 border-dark text-black'>
+                <a href={selectedRepo.html_url} className='text-black' style={{textDecoration: 'none'}}>
                 <Row>
                     <Col className='col-2 my-auto' >
                         <FaGithub className='ms-1' style={{fontSize: '1.75em'}}/>
@@ -174,6 +149,7 @@ export const GithubExtensionMobile = () => {
                         </Row>
                     </Col>
                 </Row>
+                </a>
             </Container>
         }</>
     )

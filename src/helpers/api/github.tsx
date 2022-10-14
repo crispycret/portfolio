@@ -31,6 +31,7 @@ export interface Repo {
     author: string,
     created_at: string,
     commits: Array<Commit>,
+    html_url: string
 }
 
 export interface Commit {
@@ -56,12 +57,13 @@ export interface GithubInterface {
     client: AxiosInstance; 
     create_client: () => void; 
     get_last_worked_on_repos: (limit?: number) => Promise<AxiosResponse<any, any>>; 
+    get_repo_by_name: (name: string) => Promise<AxiosResponse<any, any>>; 
 }
 
 export const Github = () => {
 
     let client_config = {
-        baseURL: 'https://127.0.0.1:5000/',
+        baseURL: 'https://github-api-buffer.herokuapp.com/',
         headers: {}
     }
 
@@ -91,7 +93,7 @@ export const Github = () => {
     const update = async () => {
         var config = {
             method: 'get', headers: {},
-            url: `https://127.0.0.1:5000/update`,
+            url: `https://github-api-buffer.herokuapp.com/update`,
         }
         return await axios(config)
     }
@@ -105,9 +107,14 @@ export const Github = () => {
     const get_last_worked_on_repos = async (limit=1) => {
         var config = {
             method: 'get', headers: {},
-            url: `https://127.0.0.1:5000/repo/last/modified?limit=${limit}`,
+            url: `https://github-api-buffer.herokuapp.com/repo/last/modified?limit=${limit}`,
         }
         return await axios(config)
+    }
+
+    const get_repo_by_name = async (name: string) => {
+            let res = await client.get(`/repo/${name}`) 
+            return res
     }
     
     
@@ -119,7 +126,8 @@ export const Github = () => {
         client_config,
         client,
         create_client,
-        get_last_worked_on_repos
+        get_last_worked_on_repos,
+        get_repo_by_name
     } as GithubInterface)
 }
 
