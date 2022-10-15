@@ -24,6 +24,6 @@ export const timeAgo = (date: string) => {
     let split = res.split(' ')
     let num = split[0]
     let interval = split[1]
-    if (num == '1') interval = interval.substring(0, interval.length-1)
+    if (num === '1') interval = interval.substring(0, interval.length-1)
     return `${num} ${interval}`
 }
