@@ -18,8 +18,8 @@ export const HomeHeader = () => {
                     <Col>
                         <Row>
                             <Row><Col>Brandon Nadeau</Col></Row>
-                            <Row><Col>bnadeau.dev@gmail.com</Col></Row>
-                            <Row><Col>704-614-6831</Col></Row>
+                            <Row><Col>email@bnadeau.dev</Col></Row>
+                            {/* <Row><Col>704-614-6831</Col></Row> */}
                             <Row><Col><a href='https://github.com/crispycret'>Github</a></Col></Row>
                         </Row>
                     </Col>
