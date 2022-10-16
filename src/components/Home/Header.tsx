@@ -72,8 +72,8 @@ export const HomeHeaderMobile = () => {
                 <Container className='my-3'>
                     <Row></Row>
                     <Row ><Col>Brandon Nadeau</Col></Row>
-                    <Row><Col>bnadeau.dev@gmail.com</Col></Row>
-                    <Row><Col>704-614-6831</Col></Row> 
+                    <Row><Col>email@bnadeau.dev</Col></Row>
+                    {/* <Row><Col>704-614-6831</Col></Row>  */}
                     <Row><Col className='text-middle'>
                         <a style={{textDecoration:'none', color:'white'}} href='https://github.com/crispycret'>
                             <FaGithub className='mx-2' style={{fontSize: '1.25em'}}/>

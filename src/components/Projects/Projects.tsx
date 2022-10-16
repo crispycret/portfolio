@@ -93,7 +93,7 @@ export const Projects = () => {
             { isNotMobile &&
                 
                 <>
-                    <Container className='my-5'>
+                    <Container id='projects' className='mt-3'>
                         {/* <Row>
                             <Col><Project {...projects[0]}/></Col>
                             <Col><Project {...projects[1]}/></Col>
