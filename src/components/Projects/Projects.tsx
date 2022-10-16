@@ -1,5 +1,5 @@
 import { Card, Col, Container, Row } from "react-bootstrap"
-import {Project, ProjectMobile} from "./Project"
+import Project from "./Project"
 
 import imageUrlGithubAPI from '../../assets/images/projects/github-api/sample.png'
 import useIsMobile from "../../helpers/hooks/useIsMobile";
@@ -80,12 +80,10 @@ export const Projects = () => {
                                 {/* Projects */}
                             </Container>
 
-                        <Row><Col><ProjectMobile {...projects[0]}/></Col></Row>
-                        <Row><Col><ProjectMobile {...projects[1]}/></Col></Row>
-                        <Row><Col><ProjectMobile {...projects[2]}/></Col></Row>
-                        <Row><Col><ProjectMobile {...projects[4]}/></Col></Row>
-                        {/* <Row><Col><ProjectMobile {...projects[0]}/></Col></Row> */}
-                        {/* <Row><Col><ProjectMobile {...projects[0]}/></Col></Row> */}
+                        <Row><Col><Project {...projects[0]}/></Col></Row>
+                        <Row><Col><Project {...projects[1]}/></Col></Row>
+                        <Row><Col><Project {...projects[2]}/></Col></Row>
+                        <Row><Col><Project {...projects[4]}/></Col></Row>
                     </Container>
                 </>
             }
@@ -94,7 +92,7 @@ export const Projects = () => {
                 
                 <>
                     <Container id='projects' className='mt-3'>
-                        {/* <Row>
+                        <Row>
                             <Col><Project {...projects[0]}/></Col>
                             <Col><Project {...projects[1]}/></Col>
                             <Col><Project {...projects[2]}/></Col>
@@ -103,7 +101,7 @@ export const Projects = () => {
                             <Col><Project {...projects[3]}/></Col>
                             <Col><Project {...projects[4]}/></Col>
                             <Col><Project {...projects[0]}/></Col>
-                        </Row> */}
+                        </Row>
                     </Container>
                 </>
             }
