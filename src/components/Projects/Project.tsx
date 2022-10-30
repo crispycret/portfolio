@@ -31,8 +31,6 @@ export const Project = (props:ProjectInterface) => {
         let split = props.githubUrl.split('/')
         let repo_name = split[split.length-1]
 
-        console.log("Retreiving " + repo_name)
-
         github.get_repo_by_name(repo_name).then(response => {
             let repo = response.data
             let commit = get_newest_commit(repo)

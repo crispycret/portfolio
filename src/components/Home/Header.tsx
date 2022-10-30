@@ -6,6 +6,9 @@ import useIsMobile from "../../helpers/hooks/useIsMobile"
 
 
 export const HomeHeader = () => {
+
+
+    const blog_website = 'https://blog.bnadeau.dev/'
     
     const [isMobile, isNotMobile] = useIsMobile()
 
@@ -28,17 +31,19 @@ export const HomeHeader = () => {
                         <Nav>
                             <Nav.Link href="#projects" className='sticky-top border border-dark'>Projects</Nav.Link>
                             <Nav.Link href="#about" className='border border-dark'>About Me</Nav.Link>
+                            <Nav.Link href={`${blog_website}`} className='border border-dark'>Blog</Nav.Link>
                         </Nav>
                         </Navbar.Collapse>
 
                     </Container>
                     </Navbar>
                 </Row>
-                <Row className='mt-3 text-center text-white header-bg border rounded border-dark'>
+                <Row className='col-6 mx-auto mt-3 text-center text-white header-bg border rounded border-dark'>
                     <Container className='border rounded border-dark'>
                         <Container className='my-3'>
                             <Row></Row>
                             <Row ><Col>Brandon Nadeau</Col></Row>
+                            <Row ><Col>Developer Portfolio</Col></Row>
                             <Row><Col>email@bnadeau.dev</Col></Row>
                             {/* <Row><Col>704-614-6831</Col></Row>  */}
                             <Row><Col className='text-middle'>
@@ -70,6 +75,7 @@ export const HomeHeader = () => {
                         <Nav>
                             <Nav.Link href="#projects" className='sticky-top border border-dark'>Projects</Nav.Link>
                             <Nav.Link href="#about" className='border border-dark'>About Me</Nav.Link>
+                            <Nav.Link href={`${blog_website}`} className='border border-dark'>Blog</Nav.Link>
                         </Nav>
                         </Navbar.Collapse>
 
