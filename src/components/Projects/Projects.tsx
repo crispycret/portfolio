@@ -70,43 +70,26 @@ export const Projects = () => {
 
 
     return (
-
         <>
-            { isMobile &&
-                <>
-                    <Container id='projects' className='mt-3'>
-                        <Container className='text-white' style={{fontSize:'20px'}}>
-                            <GradientText text='Projects' fontSize={18} />
-                                {/* Projects */}
-                            </Container>
+            <Container id='projects' className='mt-3'>
 
-                        <Row><Col><Project {...projects[0]}/></Col></Row>
-                        <Row><Col><Project {...projects[1]}/></Col></Row>
-                        <Row><Col><Project {...projects[2]}/></Col></Row>
-                        <Row><Col><Project {...projects[4]}/></Col></Row>
-                    </Container>
-                </>
-            }
+                <Container className='text-white' style={{fontSize:'20px'}}>
+                    {isMobile && <GradientText text='Projects' fontSize={18} x={37.5} y={65} height={2}/>}
+                    {isNotMobile && <GradientText text='Projects' fontSize={28} x={45} y={80} height={3}/>}                    
+                </Container>
 
-            { isNotMobile &&
-                
-                <>
-                    <Container id='projects' className='mt-3'>
-                        <Row>
-                            <Col><Project {...projects[0]}/></Col>
-                            <Col><Project {...projects[1]}/></Col>
-                            <Col><Project {...projects[2]}/></Col>
-                        </Row>
-                        <Row>
-                            <Col><Project {...projects[3]}/></Col>
-                            <Col><Project {...projects[4]}/></Col>
-                            <Col><Project {...projects[0]}/></Col>
-                        </Row>
-                    </Container>
-                </>
-            }
+                <Row>
+                    <Col><Project {...projects[0]}/></Col>
+                    <Col><Project {...projects[1]}/></Col>
+                    <Col><Project {...projects[2]}/></Col>
+                </Row>
+                <Row>
+                    <Col><Project {...projects[3]}/></Col>
+                    <Col><Project {...projects[4]}/></Col>
+                    <Col><Project {...projects[0]}/></Col>
+                </Row>
+            </Container>
         </>
-
     )
 }
 

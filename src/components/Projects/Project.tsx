@@ -2,7 +2,8 @@ import { useEffect, useState } from "react"
 import { Card, Col, Container, ListGroup, ListGroupItem, Row } from "react-bootstrap"
 
 import { FaGithub, FaCross, FaCheck, FaCheckCircle } from "react-icons/fa"
-import {ImCross} from 'react-icons/im'
+import { ImCross } from 'react-icons/im'
+import { AiOutlineLink } from 'react-icons/ai'
 
 import github, { get_newest_commit } from "../../helpers/api/github"
 import useIsMobile from "../../helpers/hooks/useIsMobile"
@@ -52,23 +53,36 @@ export const Project = (props:ProjectInterface) => {
     return (
         <>
             { isNotMobile &&
-                <Card className='bg-dark text-white square border border-success mt-5'>
-                    <Card.Img src={props.imageUrl} alt="IMAGE GOES HERE"></Card.Img>
+                <Card className='bg-dark text-white border rounded border-2 border-primary mt-5'>
                     
                     <Card.Header>
-                        <Card.Title>{props.name}</Card.Title>
+                        <Card.Title className='text-primary'>{props.name}</Card.Title>
+                    </Card.Header>
+                    <Card.Header>
+                        <Card.Img src={props.imageUrl} alt="IMAGE GOES HERE"></Card.Img>
+                    </Card.Header>
+                    <Card.Header>
                         <Card.Text>{props.summary}</Card.Text>
                     </Card.Header>
 
-                    <ListGroup className='bg-dark text-white square border border-success mt-5'>
-                        <ListGroupItem className='bg-dark text-white square border border-success'>
-                            Completed: {props.completed.toString()}
+                    <Card.Body className='mx-auto '>
+                        <ListGroup horizontal>
+                        <ListGroupItem className='mx-1 bg-dark text-primary border rounded border-primary border-2'>
+                            <Card.Text>Complete {props.completed ? <FaCheck color='green'/> : <ImCross color='red'/>} </Card.Text>
                         </ListGroupItem>
-                    </ListGroup>
-                    
-                    <Card.Body>
-                        <Card.Link>Github</Card.Link>
-                        <Card.Link>Website</Card.Link>
+                        <ListGroupItem className='mx-1 bg-dark text-primary border rounded border-primary border-2'>
+                            <Card.Link style={{textDecoration:'none'}} href={props.githubUrl}>
+                                <FaGithub className="my-auto me-1 text-middle"/>                
+                                Code
+                            </Card.Link>
+                        </ListGroupItem>
+                        <ListGroupItem className='mx-1 bg-dark text-primary border rounded border-primary border-2'>
+                            <Card.Link style={{textDecoration:'none'}} href={props.websiteUrl}>
+                            <AiOutlineLink className="my-auto me-1 text-middle"/>
+                                View
+                            </Card.Link>
+                        </ListGroupItem>
+                        </ListGroup>
                     </Card.Body>
                 </Card>
             }
@@ -81,7 +95,7 @@ export const Project = (props:ProjectInterface) => {
                             <a href={props.githubUrl} style={{textDecoration:'none'}}>
                             <Row style={{fontSize: '18px'}}>
                                 <Col className='col-1 my-auto text-middle'>
-                                    <FaGithub className="my-auto text-middle"/>                
+                                <FaGithub className="my-auto text-middle"/>                
                                 </Col>
                                 <Col className='col-10' style={{fontSize: '18px'}}>
                                     {props.name}
