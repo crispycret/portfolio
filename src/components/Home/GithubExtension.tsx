@@ -15,9 +15,7 @@ export const GithubExtension = () => {
     const MINUTE_MS = 60000;
 
     const update = () => {
-        console.log("UPDATING GITHUB API")
         Github.update().then((response) => {
-            console.log("Selecting Last Worked on Repo")
             updateSelectedRepo()
         })
     }

@@ -89,7 +89,7 @@ export const Project = (props:ProjectInterface) => {
 
 
             { isMobile && 
-                <Card className='bg-dark text-white square border border-success mt-2'>
+                <Card className='bg-dark text-white square border border-primary mt-2'>
                     <Card.Header>
                         <Card.Title>
                             <a href={props.githubUrl} style={{textDecoration:'none'}}>

@@ -18,7 +18,7 @@ export const GradientText = (props: GradientTextInterface) => {
                 <stop offset="100%" style={{stopColor: '#67a6d0', stopOpacity:'1'}} />
                 </linearGradient>
             </defs>
-            <text fill="url(#grad1)" font-size={props.fontSize} font-family="Verdana" x={`${props.x}%`} y={`${props.y}%`}>
+            <text fill="url(#grad1)" fontSize={props.fontSize} fontFamily="Verdana" x={`${props.x}%`} y={`${props.y}%`}>
                 {props.text}
             </text>
         </svg>

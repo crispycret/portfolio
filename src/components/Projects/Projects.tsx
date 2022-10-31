@@ -78,16 +78,44 @@ export const Projects = () => {
                     {isNotMobile && <GradientText text='Projects' fontSize={28} x={45} y={80} height={3}/>}                    
                 </Container>
 
-                <Row>
-                    <Col><Project {...projects[0]}/></Col>
-                    <Col><Project {...projects[1]}/></Col>
-                    <Col><Project {...projects[2]}/></Col>
-                </Row>
-                <Row>
-                    <Col><Project {...projects[3]}/></Col>
-                    <Col><Project {...projects[4]}/></Col>
-                    <Col><Project {...projects[0]}/></Col>
-                </Row>
+                {isMobile &&
+                <>
+                    <Row>
+                        <Col><Project {...projects[0]}/></Col>
+                    </Row>
+                    <Row>
+                        <Col><Project {...projects[1]}/></Col>
+                    </Row>
+                    <Row>
+                        <Col><Project {...projects[2]}/></Col>
+                    </Row>
+                    <Row>
+                        <Col><Project {...projects[3]}/></Col>
+                    </Row>
+                    <Row>
+                        <Col><Project {...projects[4]}/></Col>
+                    </Row>
+                    <Row>
+                        <Col><Project {...projects[0]}/></Col>
+                    </Row>
+                </> 
+                }
+
+                {isNotMobile &&
+                <>
+                    <Row>
+                        <Col><Project {...projects[0]}/></Col>
+                        <Col><Project {...projects[1]}/></Col>
+                        <Col><Project {...projects[2]}/></Col>
+                    </Row>
+                    <Row>
+                        <Col><Project {...projects[3]}/></Col>
+                        <Col><Project {...projects[4]}/></Col>
+                        <Col><Project {...projects[0]}/></Col>
+                    </Row>
+                </> 
+                }
+
             </Container>
         </>
     )
