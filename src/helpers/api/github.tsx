@@ -63,7 +63,7 @@ export interface GithubInterface {
 export const Github = () => {
 
     let client_config = {
-        baseURL: 'https://github-api-buffer.herokuapp.com/',
+        baseURL: process.env.REACT_APP_GITHUB_API_ENDPOINT,
         headers: {}
     }
 
@@ -76,26 +76,12 @@ export const Github = () => {
 
 
     const test = async () => {
-        let res = await client.get('/')
-        
-        return res
-
-        // var config = {
-        //     method: 'get',
-        //     url: 'https://127.0.0.1:5000/',
-        //     headers: {}
-        // }
-    
-        // return await axios(config)
+        return await client.get('/test')
     }
     
     
     const update = async () => {
-        var config = {
-            method: 'get', headers: {},
-            url: `https://github-api-buffer.herokuapp.com/update`,
-        }
-        return await axios(config)
+        return await client.get('/update')
     }
     
     
@@ -105,16 +91,11 @@ export const Github = () => {
      * @returns 
      */
     const get_last_worked_on_repos = async (limit=1) => {
-        var config = {
-            method: 'get', headers: {},
-            url: `https://github-api-buffer.herokuapp.com/repo/last/modified?limit=${limit}`,
-        }
-        return await axios(config)
+        return await client.get(`/repo/last-modified?limit=${limit}`)
     }
 
     const get_repo_by_name = async (name: string) => {
-            let res = await client.get(`/repo/${name}`) 
-            return res
+            return await client.get(`/repo/${name}`) 
     }
     
     
