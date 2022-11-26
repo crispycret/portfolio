@@ -20,6 +20,7 @@ export interface ProjectInterface {
     imageUrl: string,
 }
 
+
 export const Project = (props:ProjectInterface) => {
 
     const [isMobile, isNotMobile] = useIsMobile()
