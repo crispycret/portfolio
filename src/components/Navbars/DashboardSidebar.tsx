@@ -1,9 +1,10 @@
 import React from 'react';
 import { Component } from 'react';
-import './nav.css';
+
+import '../../assets/css/sidenav.css';
 
 import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
-import { goToAnchor, configureAnchors } from 'react-scrollable-anchor';
+// import { console.log, configureAnchors } from 'react-scrollable-anchor';
 
 import {
   GithubOutlined,
@@ -11,14 +12,14 @@ import {
   TwitterOutlined
 } from '@ant-design/icons';
 
-class SideNav extends Component {
-  constructor(props) {
+class DashboardSidebar extends Component {
+  constructor(props: any) {
     super(props);
     this.onSelect = this.onSelect.bind(this);
     this.toggleNav = this.toggleNav.bind(this);
   }
 
-  onSelect(e) {
+  onSelect(e: any) {
     console.log('onSelect');
   }
 
@@ -27,12 +28,12 @@ class SideNav extends Component {
   }
 
   render() {
-    configureAnchors({ scrollDuration: 1000 });
+    // configureAnchors({ scrollDuration: 1000 });
     return (
       <Navbar className='home'>
         <Card className='card'>
           <Card.Img
-            src={require('./../../assets/signature.png')}
+            // src={require('./../../assets/signature.png')}
             variant='top'
             className='sig'
           />
@@ -42,22 +43,22 @@ class SideNav extends Component {
               <div className='space'></div>
               <ListGroup variant='flush'>
                 <ListGroupItem className='list'>
-                  <span className='link' onClick={() => goToAnchor('section1')}>
+                  <span className='link' onClick={() => console.log('section1')}>
                     Home
                   </span>
                 </ListGroupItem>
                 <ListGroupItem className='list'>
-                  <span className='link' onClick={() => goToAnchor('section2')}>
+                  <span className='link' onClick={() => console.log('section2')}>
                     About
                   </span>
                 </ListGroupItem>
                 <ListGroupItem className='list'>
-                  <span className='link' onClick={() => goToAnchor('section3')}>
+                  <span className='link' onClick={() => console.log('section3')}>
                     Portfolio
                   </span>
                 </ListGroupItem>
                 <ListGroupItem className='list'>
-                  <span className='link' onClick={() => goToAnchor('section4')}>
+                  <span className='link' onClick={() => console.log('section4')}>
                     Contact
                   </span>
                 </ListGroupItem>
@@ -92,4 +93,4 @@ class SideNav extends Component {
   componentDidMount() {}
 }
 
-export default SideNav;
+export default DashboardSidebar;

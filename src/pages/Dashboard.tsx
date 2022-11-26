@@ -1,4 +1,5 @@
 import { useState } from "react";
+import DashboardSidebar from "../components/Navbars/DashboardSidebar";
 
 
 type ExampleProject = {
@@ -23,8 +24,9 @@ export const Dashboard = () => {
     return (
         <>
 
-
+        <DashboardSidebar />
         
+
 
         </>
     )
