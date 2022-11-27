@@ -10,9 +10,9 @@ export const HomePage = () => {
 
     return (
         <Container id='home-page'>
-            <Home />
-            <Projects />
-            <About />
+            {/* <Home /> */}
+            {/* <Projects /> */}
+            {/* <About /> */}
             <div className='my-5'></div>
         </Container>
     )
