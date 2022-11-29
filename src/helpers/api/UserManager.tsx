@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react"
 import portfolio from "./portfolio"
 
 const sign = require('jwt-encode')
@@ -5,46 +6,48 @@ const sign = require('jwt-encode')
 
 export const UserManager = () => {
 
-    let user = ""
-    let token = ""
-    let validToken = false
+    let [user, setUser] = useState<object | null>(null)
+    let [token, setToken] = useState("")
+    let [validToken, setValidToken] = useState(false)
 
 
     const login = async (email: string, password: string) => {
+        
+        const onLoginFailure = () => {
+            setUser(null)
+            setToken("")
+            setValidToken(false)
+            portfolio.deleteAuthorizationToken()
+        }
+
         let data = {email, password}
         let res = await portfolio.client.post('/auth/login', data)
         .catch(error => {
             return Promise.reject(error)
         })
         if (res.status !== 200) {
-            user = ""
-            token = ""
-            validToken = false
-            delete portfolio.client.defaults.headers.common['Authorization']
+            onLoginFailure()
+            return res
+        }
+        if (res.data.status != 200) {
+            onLoginFailure()
             return res
         }
 
-        if (res.data.status == 200) {
-            user = res.data.body
-            token = res.data.Authorization
-            validToken = true
-            portfolio.client.defaults.headers.common['Authorization'] = res.data.Authorization
-            return res
-        } 
-
-        user = ""
-        token = ""
-        validToken = false
-        delete portfolio.client.defaults.headers.common['Authorization']
+        // Success
+        setUser(res.data.body)
+        setToken(res.data.Authorization)
+        setValidToken(true)
+        portfolio.setAuthorizationToken(res.data.Authorization)
         return res
     }
 
 
     const register = async(email: string, password: string, secret_key:string) => {
         if (user != null) return
-        let data = {email, password}
-        let token = sign(data, secret_key)
-        let headers = {'Authorization': token}
+        let _data = {username: 'admin', email, password}
+        let _token = sign(_data, secret_key)
+        let headers = {'Authorization': _token}
         let res = await portfolio.client.post('/auth/create_admin', {}, {headers})
         .catch(error => {
             return Promise.reject(error)
@@ -53,25 +56,27 @@ export const UserManager = () => {
     }
 
 
-    const hasToken = () => { return token != null }
+    const hasToken = () => { return token != "" }
 
     const validateToken = async() => {
-        if (!hasToken) return
+        if (!user) return
+        if (!hasToken()) return
 
         let res = await portfolio.client.get('/auth/validate_token')
         .catch (error => {return Promise.reject(error)})
 
         if (res.status != 200) {
-            if (validToken) validToken = false
+            if (validToken) setValidToken(false)
             return res
         }
         if (res.data.status == 200) {
-            if (!validToken) validToken = true
+            if (!validToken) setValidToken(true)
             return res
         }
-        if (validToken) validToken = false
+        if (validToken) setValidToken(false)
         return res
     }
+
     
     
     return {
@@ -86,5 +91,7 @@ export const UserManager = () => {
 
 }
 
-export const userManager = UserManager()
-export default userManager;
+// export const userManager = UserManager()
+// export default userManager;
+
+export default UserManager;

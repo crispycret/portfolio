@@ -7,9 +7,13 @@ import userManager from './UserManager'
 export const Portfolio = () => {
 
     let config = {
-        baseURL: process.env.REACT_APP_PORTFOLIO_API_ENDPOINT,
+        // baseURL: process.env.REACT_APP_PORTFOLIO_API_ENDPOINT,
+        baseURL: 'http://127.0.0.1:5000',
         headers: {}
     }
+
+    console.log(process.env)
+    
 
     let client = axios.create(config)
 
@@ -17,14 +21,20 @@ export const Portfolio = () => {
         client = axios.create(config)
     }
 
-    const get_project_status = () => {
-        
+    const setAuthorizationToken = (token: string) => {
+        portfolio.client.defaults.headers.common['Authorization'] = token
+    }
+
+    const deleteAuthorizationToken = () => {
+        delete portfolio.client.defaults.headers.common['Authorization']
     }
 
     return {
         config,
         client,
         reconnect,
+        setAuthorizationToken,
+        deleteAuthorizationToken
     }
 
 }

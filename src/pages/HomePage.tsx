@@ -6,11 +6,11 @@ import Home from "../components/Home/Home";
 import Projects from "../components/Projects/Projects";
 import About from "../components/About/About";
 
-export const HomePage = () => {
+export const HomePage = (props: any) => {
 
     return (
         <Container id='home-page'>
-            {/* <Home /> */}
+            <Home />
             {/* <Projects /> */}
             {/* <About /> */}
             <div className='my-5'></div>

@@ -1,9 +1,8 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios'
-import userManager from './UserManager'
 import portfolio from './portfolio'
 
 
-export const ProjectStatusManager = () => {
+export const ProjectStatusManager = (props: any) => {
 
     let statuses = new Array<any>()
 
@@ -17,7 +16,7 @@ export const ProjectStatusManager = () => {
     }
 
     const fetch = async() => {
-        if (!userManager.hasToken()) return
+        if (!props.userManager.hasToken()) return
         try {
             let res = await portfolio.client.get('/projects/statuses')
             if (res.data.status == 200) {
@@ -29,7 +28,7 @@ export const ProjectStatusManager = () => {
     }
 
     const create = async (data:any) => {
-        if (!userManager.hasToken()) return
+        if (!props.userManager.hasToken()) return
         let res = await portfolio.client.get('/projects/create', data=data)
         .catch(error => {
             return Promise.reject(error)
@@ -41,7 +40,7 @@ export const ProjectStatusManager = () => {
     }
     
     const remove = async (id:number) => {
-        if (!userManager.hasToken()) return
+        if (!props.userManager.hasToken()) return
         let res = await portfolio.client.get(`/projects/id/${id}/delete`)
         .catch(error => {
             return Promise.reject(error)
@@ -64,12 +63,12 @@ export const ProjectStatusManager = () => {
 }
 
 
-export const ProjectManger = () => {
+export const ProjectManger = (props: any) => {
 
     let projects = Array<any>()
 
     const get = (id: number) => {
-        if (!userManager.validToken) return null
+        if (!props.userManager.validToken) return null
         for (let project of projects) {
             if (project.id == id) {
                 return project
@@ -79,7 +78,7 @@ export const ProjectManger = () => {
     }
 
     const fetch = async () => {
-        if (!userManager.validToken) return
+        if (!props.userManager.validToken) return
 
         let res = await portfolio.client.get('/projects/')
         .catch (error => {
@@ -98,15 +97,15 @@ export const ProjectManger = () => {
     }
 
     const create = () => {
-        if (!userManager.validToken) return
+        if (!props.userManager.validToken) return
 
     }
     const remove = () => {
-        if (!userManager.validToken) return
+        if (!props.userManager.validToken) return
 
     }
     const edit = () => {
-        if (!userManager.validToken) return
+        if (!props.userManager.validToken) return
 
     }
 

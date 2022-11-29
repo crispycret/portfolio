@@ -1,76 +1,50 @@
 import { useEffect, useState } from "react";
-import { Button, Form, FormGroup, FormLabel, FormText, Tab, Tabs } from "react-bootstrap";
-import DashboardSidebar from "../components/Navbars/DashboardSidebar";
-import userManager from "../helpers/api/UserManager";
+import { Button, Form, FormGroup, FormLabel, FormText, Modal, Tab, Tabs } from "react-bootstrap";
+import { DashboardAuth } from "../components/Dashboard/DashboardAuth";
+import DashboardSidebar from "../components/Dashboard/DashboardSidebar";
 
 
-export const Dashboard = () => {
+export const Dashboard = (props: any) => {
 
     // Set Projects Displayed on HomePage
 
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [showAuth, setShowAuth] = useState(true)
 
-    // useEffect(() => {
-    //     if (userManager.hasToken())
-    //         userManager.validateToken()
-    // }, [userManager])
+    useEffect(() => {
+        if (props.userManager.hasToken()){
+            props.userManager.validateToken()
+            setShowAuth(false)
+        }
+        else{
+            setShowAuth(true)
+        }
+    }, [props.userManager.user, props.userManager.validToken])
 
 
-    const [exampleProjects, setExampleProjects] = useState(Array<object>())
-
-    const login = (e: any) => {
-        e.preventdefault()
-
-        userManager.login(email, password)
+    const handleHide = () => {
+        // Do nothing; The only way to hide is to leave page or authenticate
     }
 
-    const register = (e:any) => {
-
+    const onAuthSuccess = () => {
+        // Feed to Dashboard Auth for login if nesseccary
     }
+ 
 
     return (
         <>
-        {/* Authentication Required */}
-        {!userManager.hasToken() || userManager.validToken && 
-            <Tabs
-                defaultActiveKey="login"
-                id="auth-tabs"
-                className="mb-3"
-            >
-                <Tab eventKey="login" title="Login">
-                    <Form id='login' onSubmit={(e) => login(e)}>
-                        <FormGroup>
-                            <FormLabel>Email</FormLabel>
-                            <FormText/>
-                            <FormLabel>Password</FormLabel>
-                            <FormText />
-                            <Button>Login</Button>
-                        </FormGroup>
-                    </Form>
-                </Tab>
-                <Tab eventKey="register" title="Register">
-                    <Form id='register' onSubmit={(e) => register(e)}>
-                        <FormGroup>
-                            <FormLabel>Email</FormLabel>
-                            <FormText/>
-                            <FormLabel>Password</FormLabel>
-                            <FormText />
-                            <FormLabel>Admin Secret Key</FormLabel>
-                            <FormText />
-                            <Button>Register</Button>
-                        </FormGroup>
-                    </Form>
-                </Tab>
-            </Tabs>
-        }
+            {/* Authentication Required */}
+            {!props.userManager.hasToken() && !props.userManager.validToken && 
+                <Modal show={showAuth} onHide={handleHide}>
+                    <Modal.Body>
+                        <DashboardAuth {...props}/>
+                    </Modal.Body>
+                </Modal>
+            }
 
-        {/* Authenticated */}
-        {userManager.hasToken() && userManager.validToken &&
-            <DashboardSidebar />
-        
-        }
-
+            {/* Authenticated */}
+            {props.userManager.hasToken() && props.userManager.validToken &&
+                <DashboardSidebar />
+            }
         </>
     )
 }
