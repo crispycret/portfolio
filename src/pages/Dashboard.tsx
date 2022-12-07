@@ -1,24 +1,29 @@
 import { useEffect, useState } from "react";
-import { Button, Form, FormGroup, FormLabel, FormText, Modal, Tab, Tabs } from "react-bootstrap";
-import { DashboardAuth } from "../components/Dashboard/DashboardAuth";
-import DashboardSidebar from "../components/Dashboard/DashboardSidebar";
+import { Button, Container, Form, FormGroup, FormLabel, FormText, Modal, Tab, Tabs } from "react-bootstrap";
+import { Route, Routes } from "react-router-dom";
 
+import Auth from "../components/Dashboard/Auth";
+import ProjectManager from "../components/Dashboard/ProjectManager/ProjectManager";
+import Sidebar from "../components/Dashboard/Sidebar";
+import Content from "../components/Dashboard/Content";
+
+import '../assets/css/dashboard.css'
+import Home from "../components/Dashboard/Home";
 
 export const Dashboard = (props: any) => {
 
     // Set Projects Displayed on HomePage
+    const [sidebarToggled, setsidebarToggled] = useState(false)
 
     const [showAuth, setShowAuth] = useState(true)
 
     useEffect(() => {
-        if (props.userManager.hasToken()){
-            props.userManager.validateToken()
+        if (props.apis.portfolio.userManager.hasValidToken()){
             setShowAuth(false)
-        }
-        else{
+        } else{
             setShowAuth(true)
         }
-    }, [props.userManager.user, props.userManager.validToken])
+    }, [props.apis.portfolio.userManager.validToken])
 
 
     const handleHide = () => {
@@ -33,21 +38,34 @@ export const Dashboard = (props: any) => {
     return (
         <>
             {/* Authentication Required */}
-            {!props.userManager.hasToken() && !props.userManager.validToken && 
+            {!props.apis.portfolio.userManager.hasValidToken() &&
                 <Modal show={showAuth} onHide={handleHide}>
                     <Modal.Body>
-                        <DashboardAuth {...props}/>
+                        <Dashboard.Auth {...props}/>
                     </Modal.Body>
                 </Modal>
             }
 
             {/* Authenticated */}
-            {props.userManager.hasToken() && props.userManager.validToken &&
-                <DashboardSidebar />
+            {props.apis.portfolio.userManager.hasValidToken() &&
+            <>
+                <Dashboard.Sidebar {...props} sidebarToggled={sidebarToggled} setsidebarToggled={setsidebarToggled} />
+                <Dashboard.Content props={{...props, sidebarToggled}}>
+                    <Routes>
+                        <Route path='/' element={<Home />} />
+                        <Route path="/projects" element={<Dashboard.ProjectManager {...props}/>} />
+                    </Routes>
+                </Dashboard.Content>
+            </> 
             }
         </>
     )
 }
+
+Dashboard.Auth = Auth;
+Dashboard.Sidebar = Sidebar;
+Dashboard.ProjectManager = ProjectManager;
+Dashboard.Content = Content;
 
 
 export default Dashboard;

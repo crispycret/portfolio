@@ -8,29 +8,30 @@ import HomePage from './pages/HomePage';
 import MyNavbar from './components/Navbars/Navbar';
 import Dashboard from './pages/Dashboard';
 
-import UserManager from './helpers/api/UserManager';
+import UserManager from './helpers/api/portfolio/UserManager';
+import Portfolio from './helpers/api/portfolio/portfolio';
+import github from './helpers/api/github';
 
 
 function App() {
 
-  let props = {
-    userManager: UserManager(),
+  const apis = {
+    portfolio: Portfolio(),
+    github,
   }
 
-  let authProps = {
-    ...props,
-    userManager: UserManager(),
-
+  let props = {
+    apis,
   }
 
   return (
     <div className="App">
 
-      <MyNavbar />
+      {/* <MyNavbar /> */}
       <BrowserRouter>
         <Routes>
           <Route index path="/" element={<HomePage {...props}/>} />
-          <Route path="/dashboard" element={<Dashboard {...authProps}/>} />
+          <Route path="/dashboard/*" element={<Dashboard {...props}/>} />
         </Routes>
       </BrowserRouter>
 

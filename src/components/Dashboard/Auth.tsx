@@ -4,6 +4,8 @@ import { Button, Container, Form, FormGroup, FormLabel, FormText, Modal, Tab, Ta
 
 export const DashboardAuth = (props: any) => {
 
+    const topNav = document.getElementById('top-nav')?.clientHeight || '56'
+
     const Spacer = ({size=1}:any) => <div className={`my-${size}`} />
     
     const [email, setEmail] = useState("")
@@ -14,12 +16,12 @@ export const DashboardAuth = (props: any) => {
     
     const login = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        props.userManager.login(email, password)
+        props.apis.portfolio.userManager.login(email, password)
     }
 
     const register = (e:any) => {
         e.preventDefault()
-        props.userManager.register(email, password, secretKey)
+        props.apis.portfolio.userManager.register(email, password, secretKey)
     }    
     
     return (
@@ -64,6 +66,5 @@ export const DashboardAuth = (props: any) => {
     )
 
 }
-
 
 export default DashboardAuth;

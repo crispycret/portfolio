@@ -1,0 +1,53 @@
+
+
+.dashboard-content.mobile {
+    left: 20%;
+    width: 80%;
+    font-size: 10px;
+}
+
+
+/* Dashboard Content */
+.dashboard-content {
+    transition: all 0.3s;
+    position: fixed;
+    left: 10%;
+    width: 90%;
+}
+
+
+/* Dashboard Sidebar */
+.sidebar-open{
+    left: 17.5%;
+    position: fixed;
+    width: 82.5%;
+}
+
+
+
+
+/* Dashboard Content List Group */
+.list-group-item-dark {
+    background-color: #333;
+    color: rgb(207, 207, 207);
+}
+
+.list-group-item-dark:hover {
+    background-color: rgb(81, 81, 81);
+    color: rgb(207, 207, 207);
+}
+
+
+.list-group-item-dark.options:hover {
+    cursor:pointer;
+}
+
+
+.project-showcase {
+    border-bottom: 3px solid hsla(0, 0%, 67.8%, 0.2);
+}
+
+
+.list-group-container:hover {
+    background-color: #333;    
+}
