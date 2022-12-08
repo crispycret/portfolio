@@ -10,29 +10,38 @@ import useIsMobile from '../../../helpers/hooks/useIsMobile';
 
 
 export type Props = {
+    children?: JSX.Element,
     className?:string,
     onClick?:any,
-    children: JSX.Element,
+    index?: number,
+    draggable?:boolean,
+    onDragStart?:(e:any, index:number | undefined) => {},
+    onDragOver?:(e:any, index:number | undefined) => {},
+    onDrop?:(e:any, index:number | undefined) => {},
 }
 
-export const ListGroupItemDark = ({className, onClick, children}: Props) => 
+export const ListGroupItemDark = ({
+    children, className, onClick, index,
+    draggable=false, onDragStart, onDragOver, onDrop
+}: Props) => 
     <ListGroup.Item as="li" variant="dark" onClick={onClick}
         className={`d-flex justify-content-between align-items-start me-1 ${className? className : ''}`}
-    >
+        draggable={draggable}
+        onDragStart={e => onDragStart ? onDragStart(e, index) : undefined}
+        onDragOver={e => onDragOver ? onDragOver(e, index) : undefined}
+        onDrop={e => onDrop ? onDrop(e, index) : undefined}
+      >
         {children}
     </ListGroup.Item>
 
 
 export const ProjectInfo = ({project, descriptionLimit=100}: any) => {
-    const [isMobile, isNotMobile] = useIsMobile()
     return (
         <div>
             <div className="fw-bold ms-2 d-flex">{project.title}</div>
-            {/* { isNotMobile &&  */}
                 <div className='text-start'>
                     {project.description.substring(0, descriptionLimit)}..
                 </div>
-            {/* } */}
         </div>
     )
 }
@@ -53,16 +62,25 @@ export const ProjectOptions = ({project, openEditor, openDelete}: any) =>
 
 
 export const ProjectDragAndDrop = () => 
-    <>
         <RxDragHandleDots1 className='my-auto' style={{}} fontSize={24} />
-    </>
 
 
 
 
-export const ProjectEntry = ({project, openEditor, openDelete, key, descriptionLimit=undefined}: any) => 
-    <ListGroup horizontal key={key}>
-        <ListGroupItemDark className='px-0'>
+export const ProjectEntry = ({
+    project, index, 
+    descriptionLimit=undefined,
+    openEditor, openDelete,
+    draggable, onDragStart, onDragOver, onDrop,
+}: any) => 
+    <ListGroup horizontal>
+        <ListGroupItemDark className='px-0'
+            index={index}
+            draggable={draggable}
+            onDragStart={onDragStart}
+            onDragOver={onDragOver}
+            onDrop={onDrop}
+        >
             <ProjectDragAndDrop />
         </ListGroupItemDark>
         <ListGroupItemDark className='w-100' onClick={() => openEditor(project)}>
