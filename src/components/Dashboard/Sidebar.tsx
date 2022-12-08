@@ -1,6 +1,10 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { Link, NavLink} from 'react-router-dom';
+import useIsMobile from '../../helpers/hooks/useIsMobile';
+
+import '../../assets/css/sidenav.css'
+
 
 const cdbreact = require('cdbreact'); 
 const {
@@ -39,15 +43,21 @@ const {
 
 const Sidebar = (props: any) => {
 
+  const [isMobile, isNotMobile] = useIsMobile()
+
   const toggle = <i className="fa fa-bars fa-large" onClick={(e:any) => props.setsidebarToggled(!props.sidebarToggled)}></i>
 
   return (
     <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial', position: 'absolute' }}>
-      <CDBSidebar toggled={!Boolean(props.sidebarToggled)} textColor="#fff" backgroundColor="#333">
+      <CDBSidebar 
+        toggled={!Boolean(props.sidebarToggled)}
+        className={`${isMobile? 'mobile' : ''}`} 
+        textColor="#fff" backgroundColor="#333"
+      >
        
-        <CDBSidebarHeader prefix={toggle}>
+        <CDBSidebarHeader prefix={toggle} className={`${isMobile? 'mobile-toggle' : ''}`}>
           <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
-            Sidebar
+            Dashboard
           </a>
         </CDBSidebarHeader>
 
@@ -57,9 +67,13 @@ const Sidebar = (props: any) => {
             <NavLink end to="/">
               <CDBSidebarMenuItem icon="columns">Home</CDBSidebarMenuItem>
             </NavLink>
+
+{/* 
             <NavLink end to="/dashboard">
               <CDBSidebarMenuItem icon="th-large">Dashboard</CDBSidebarMenuItem>
             </NavLink>
+ */}
+ 
             <NavLink end to="/dashboard/projects">
               <CDBSidebarMenuItem icon="sticky-note">Projects</CDBSidebarMenuItem>
             </NavLink>

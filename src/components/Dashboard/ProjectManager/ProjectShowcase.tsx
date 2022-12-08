@@ -1,42 +1,16 @@
 
 import { useEffect, useState } from 'react'
 import { Link, NavLink} from 'react-router-dom';
-import { Badge, Card, Col, Container, Dropdown, ListGroup, ListGroupItem } from 'react-bootstrap';
 
-import { FaRegEdit } from 'react-icons/fa'
-import { AiOutlineDelete, AiFillDelete } from 'react-icons/ai'
-import { BiAddToQueue } from 'react-icons/bi'
-import {SlOptionsVertical} from 'react-icons/sl'
+import { Container, ListGroup } from 'react-bootstrap';
+import ProjectEntry, { 
+    ListGroupItemDark, 
+    ProjectDragAndDrop, 
+    ProjectInfo, 
+    ProjectOptions 
+} from './ProjectEntry';
+
 import useIsMobile from '../../../helpers/hooks/useIsMobile';
-
-
-
-
-type Props = {
-    className?:string,
-    onClick?:any,
-    children: JSX.Element,
-}
-
-const ListGroupItemDark = ({className, onClick, children}: Props) => 
-    <ListGroup.Item as="li" variant="dark" onClick={onClick}
-        className={`d-flex justify-content-between align-items-start me-auto ${className}`}
-    >
-        {children}
-    </ListGroup.Item>
-
-
-const ProjectInfo = ({project}: any) => 
-    <div>
-        <div className="fw-bold ms-2 d-flex">{project.title}</div>
-        <div>
-            {project.description.substring(0, 100)}..
-        </div>
-    </div>
-
-const ProjectOptions = () => <div className='my-auto'><SlOptionsVertical/></div>
-
-
 
 
 
@@ -77,31 +51,26 @@ export const ProjectShowcase = (props: any) => {
 
 
     const create_elements = () => {
-        setElements(testManager().getShowcase().map((project:any, i:number) =>
-            <ListGroup horizontal key={i}>
-                <ListGroupItemDark className='w-100' onClick={() => props.openEditor(project)}>
-                    <ProjectInfo project={project} />
-                </ListGroupItemDark>
-                <ListGroupItemDark className='options'>
-                    <ProjectOptions />
-                </ListGroupItemDark>
-            </ListGroup>
-        ))
+        setElements(testManager().getShowcase().map((project:any, key:number) => {
+            let _props = { project, key } 
+            return (
+                <ProjectEntry {..._props} openEditor={props.openEditor} openDelete={props.openDelete} />
+            )
+        }))
     }
 
 
-
     const create_mobile_elements = () => {
-        setElements(testManager().getShowcase().map((project:any, i:number) => 
-            <ListGroup horizontal key={i}>
-                <ListGroupItemDark className='w-100' onClick={() => props.openEditor(project)}>
-                    <ProjectInfo project={project} />
-                </ListGroupItemDark>
-                <ListGroupItemDark className='options'>
-                    <ProjectOptions />
-                </ListGroupItemDark>
-            </ListGroup>
-        ))
+        setElements(testManager().getShowcase().map((project:any, key:number) => {
+            let _props = { project, key } 
+            return (
+                <ProjectEntry {..._props} 
+                    openEditor={props.openEditor} 
+                    openDelete={props.openDelete}
+                    descriptionLimit={80} 
+                />
+            )
+        }))
     }
 
     useEffect(() => {
@@ -110,11 +79,13 @@ export const ProjectShowcase = (props: any) => {
     }, [])
 
     return (
-        <Container className='my-2 pb-2 project-showcase'>
+        <>
+            {/* <Container className={`my-2 pb-2 project-showcase ${isMobile ? 'px-0' : ''}`} /> */}
             <ListGroup>
                 {elements}
             </ListGroup>
-        </Container>
+            <Container className={`my-2 pb-2 project-showcase ${isMobile ? 'px-0' : ''}`} />
+        </>
     )
 }
 

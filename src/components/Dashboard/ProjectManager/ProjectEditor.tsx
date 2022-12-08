@@ -41,7 +41,7 @@ export const ProjectEditor = (props: any) => {
     }
 
     return (
-        <Modal show={props.show} onHide={() => props.setShow(false)}>
+        <Modal className='dark' show={props.show} onHide={() => props.setShow(false)}>
             <Form onSubmit={(e:any) => handleSubmit(e)}>
                 <Modal.Header closeButton>
                     <Modal.Title>{props.project ? props.project.title : newProject.title}</Modal.Title>
@@ -99,7 +99,6 @@ export const ProjectEditor = (props: any) => {
                         </Form.Group>
                     }
 
-
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="primary" type="submit">Save</Button>
@@ -109,3 +108,38 @@ export const ProjectEditor = (props: any) => {
     )
 
 } 
+
+
+export default ProjectEditor;
+
+
+
+export const DeleteProject = (props: any) => {
+
+    const handleSubmit = (e: any) => {
+
+    }
+
+    return (
+        <Modal className='my-5 py-5 dark' show={props.show} onHide={() => props.setShow(false)}>
+            <Form onSubmit={(e:any) => handleSubmit(e)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Delete Project</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className='text-center'>
+                        Are you sure you want to delete "{props.project?.title || 'Project Title'}"?
+                    </div>
+                    <div className='text-center'>
+                        This cannot be undone!
+                    </div>
+                    
+                </Modal.Body>
+                <Modal.Footer className='border-0'>                
+                    <Button variant="danger" type="submit">Delete</Button>
+                    <Button variant="secondary" onClick={() => props.setShow(false)}>Cancel</Button>
+                </Modal.Footer>
+                </Form>
+        </Modal>
+    )
+}

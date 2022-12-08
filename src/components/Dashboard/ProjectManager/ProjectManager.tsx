@@ -1,23 +1,22 @@
 import { useEffect, useState } from 'react'
 import { Badge, Card, Container, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { Link, NavLink} from 'react-router-dom';
-
-import { FaRegEdit } from 'react-icons/fa'
-import { AiOutlineDelete, AiFillDelete } from 'react-icons/ai'
-import { BiAddToQueue } from 'react-icons/bi'
+import { SlOptionsVertical } from 'react-icons/sl';
 
 import ProjectToolbar from './ProjectToolbar';
 import ProjectShowcase from './ProjectShowcase';
-import { ProjectEditor } from './ProjectEditor';
-import { SlOptionsVertical } from 'react-icons/sl';
+import { DeleteProject, ProjectEditor } from './ProjectEditor';
+
+import ProjectEntry, { 
+    ListGroupItemDark, 
+    ProjectDragAndDrop, 
+    ProjectInfo, 
+    ProjectOptions 
+} from './ProjectEntry';
+
+import useIsMobile from '../../../helpers/hooks/useIsMobile';
+
 // import Project from './Project';
-
-const cdbreact = require('cdbreact'); 
-const {
-  CDBContainer,
-  CDBSidebarHeader,
-} = cdbreact;
-
 
 // Project Modal Popup when clicked (Edit / Delete)
 // New Project Toolbar
@@ -29,9 +28,17 @@ export const ProjectManager = (props: any) => {
 
     const [editorProject, setEditorProject] = useState(null)
     const [showEditor, setShowEditor] = useState(false)
+
     const openEditor = (project: any) => {
-        setShowEditor(true)
         setEditorProject(project)
+        setShowEditor(true)
+    }
+
+    const [selectedProject, setSelectedProject] = useState(null)
+    const [showDelete, setShowDelete] = useState(false)
+    const openDelete = (project: any) => {
+        setSelectedProject(project)
+        setShowDelete(true)
     }
 
     const manager = props.apis.portfolio.projectManager
@@ -40,31 +47,32 @@ export const ProjectManager = (props: any) => {
     
     const testElements = [
         {
-            title:"Project 1", 
-            description: "Description of project"
-        }
+            title: "Github API Buffer",
+            description: "A read only flask api for a single user. The API acts as a buffer between the true Github API and allows faster data retriveals by storing the users github data in a seperate database.",
+            status: 'completed',
+            githubUrl: 'https://github.com/crispycret/github-api',
+            websiteUrl: 'https://github.com/crispycret/github-api',
+            previewUrl: '',
+        },
     ]
 
     const create_elements = () => {
         // if (!manager.projects) { return }
         
         // setElements(manager.projects.map((project: any, i: number) => {
-        setElements(testElements.map((project: any, i: number) => 
-            <div key={i}>
-                <ListGroup.Item as="li" variant="dark" className="d-flex justify-content-between align-items-start">
-                {/* <ListGroup.Item as="li" backgroundColor={'#333'} className="d-flex justify-content-between align-items-start"> */}
-                    <div className="ms-2 me-auto">
-                        <div className="fw-bold">Subheading</div>
-                        <div>Cras justo odio</div>
-                    </div>
-                    <div className='my-auto'>
-                        <SlOptionsVertical/>
-                        {/* <Badge bg="primary" pill>14</Badge> */}
-                    </div>
-                </ListGroup.Item>
-            </div>
+        setElements(testElements.map((project: any, key: number) => {
+            let props={project, key, openEditor, openDelete} 
+            return (
+                <ProjectEntry {...props}/>
+            )
+        }
         ))
     }
+
+    const [isMobile, isNotMobile] = useIsMobile()
+    
+    const ifMobileDefault = () => {return isMobile ? 'mobile' : ''}
+    const ifMobile = (cls:string) => {return isMobile ? cls : ''}
 
     useEffect(() => {
         create_elements()
@@ -73,25 +81,24 @@ export const ProjectManager = (props: any) => {
     return(
         <>
             <ProjectEditor show={showEditor} setShow={setShowEditor} project={editorProject}/>
+            <DeleteProject show={showDelete} setShow={setShowDelete} project={selectedProject}/>
 
-            <ListGroup className='my-5'>
+            <ListGroup className={`my-5 ${ifMobile('px-0')}`}>
                 <ListGroup.Item variant='dark' className='list-group-container'>
                     <ProjectToolbar openEditor={openEditor}/>
                 </ListGroup.Item>
 
-                <ListGroup.Item variant='dark' className='list-group-container'>
-                    <ProjectShowcase openEditor={openEditor}/>
+                <ListGroup.Item variant='dark' className={`list-group-container ${ifMobile('px-0')}`}>
+                    <ProjectShowcase openEditor={openEditor} openDelete={openDelete}/>
                 </ListGroup.Item>
 
-                {/* Exclude Projects display in the ProjectShowcase */}
 
-                <ListGroup.Item variant='dark' className='list-group-container'>
-                    <Container className='my-2'>
-                        {/* <Card.Title className='text-black my-1'>Projects</Card.Title> */}
-                        <ListGroup as="ol" numbered>
-                            { elements }
-                        </ListGroup>
-                    </Container>
+                {/* Exclude Projects display in the ProjectShowcase? */}
+                <ListGroup.Item variant='dark' className={`list-group-container ${ifMobile('px-0')}`}>
+                    <Container className='my-2' />
+                    <ListGroup as="ol" numbered>
+                        { elements }
+                    </ListGroup>
                 </ListGroup.Item>
 
             </ListGroup>
