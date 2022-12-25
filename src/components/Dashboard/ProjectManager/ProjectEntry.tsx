@@ -1,12 +1,7 @@
 
-import { useEffect, useState } from 'react'
-import { Link, NavLink} from 'react-router-dom';
-import { Badge, Card, Col, Container, Dropdown, ListGroup } from 'react-bootstrap';
-
+import { Dropdown, ListGroup } from 'react-bootstrap';
 import { RxDragHandleDots1 } from 'react-icons/rx'
 import {SlOptionsVertical} from 'react-icons/sl'
-import useIsMobile from '../../../helpers/hooks/useIsMobile';
-
 
 
 export type Props = {
@@ -36,6 +31,8 @@ export const ListGroupItemDark = ({
 
 
 export const ProjectInfo = ({project, descriptionLimit=100}: any) => {
+    if (project === undefined) return <div></div>
+
     return (
         <div>
             <div className="fw-bold ms-2 d-flex">{project.title}</div>
@@ -68,7 +65,7 @@ export const ProjectDragAndDrop = () =>
 
 
 export const ProjectEntry = ({
-    project, index, 
+    index, project, setProject, 
     descriptionLimit=undefined,
     openEditor, openDelete,
     draggable, onDragStart, onDragOver, onDrop,

@@ -10,7 +10,7 @@ export const HomeHeader = () => {
 
     const blog_website = 'https://blog.bnadeau.dev/'
     
-    const [isMobile, isNotMobile] = useIsMobile()
+    const {isMobile, isNotMobile} = useIsMobile()
 
     return (
         <>

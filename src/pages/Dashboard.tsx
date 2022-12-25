@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { Button, Container, Form, FormGroup, FormLabel, FormText, Modal, Tab, Tabs } from "react-bootstrap";
 import { Route, Routes } from "react-router-dom";
 
-import Auth from "../components/Dashboard/Auth";
+import Auth from "../components/Dashboard/core/Auth";
 import ProjectManager from "../components/Dashboard/ProjectManager/ProjectManager";
-import Sidebar from "../components/Dashboard/Sidebar";
-import Content from "../components/Dashboard/Content";
+import Sidebar from "../components/Dashboard/core/Sidebar";
+import Content from "../components/Dashboard/core/Content";
 
 import '../assets/css/dashboard.css'
-import Home from "../components/Dashboard/Home";
+import Home from "../components/Dashboard/core/Home";
 
 export const Dashboard = (props: any) => {
 
@@ -17,8 +17,12 @@ export const Dashboard = (props: any) => {
 
     const [showAuth, setShowAuth] = useState(true)
 
+    const hasValidToken = () => {
+        return props.apis.portfolio.userManager.hasValidToken()
+    }
+
     useEffect(() => {
-        if (props.apis.portfolio.userManager.hasValidToken()){
+        if (hasValidToken()){
             setShowAuth(false)
         } else{
             setShowAuth(true)
@@ -38,7 +42,7 @@ export const Dashboard = (props: any) => {
     return (
         <>
             {/* Authentication Required */}
-            {!props.apis.portfolio.userManager.hasValidToken() &&
+            {!hasValidToken() &&
                 <Modal show={showAuth} onHide={handleHide}>
                     <Modal.Body>
                         <Dashboard.Auth {...props}/>
@@ -47,7 +51,7 @@ export const Dashboard = (props: any) => {
             }
 
             {/* Authenticated */}
-            {props.apis.portfolio.userManager.hasValidToken() &&
+            {hasValidToken() &&
             <>
                 <Dashboard.Sidebar {...props} sidebarToggled={sidebarToggled} setsidebarToggled={setsidebarToggled} />
                 <Dashboard.Content props={{...props, sidebarToggled}}>

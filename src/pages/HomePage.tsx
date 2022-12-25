@@ -10,7 +10,7 @@ export const HomePage = (props: any) => {
 
     return (
         <Container id='home-page'>
-            <Home />
+            <Home {...props}/>
             {/* <Projects /> */}
             {/* <About /> */}
             <div className='my-5'></div>

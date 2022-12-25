@@ -28,7 +28,11 @@
 
 
 /* Modal */
-
+.btn-close {
+    background: transparent url(
+        "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'><path d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/></svg>"
+        ) center/1em auto no-repeat;
+}
 .modal-content {
     background-color: #333;
     color: rgb(207, 207, 207);
@@ -40,6 +44,19 @@
 }
 
 .form-control:focus {
+    background-color: #333;
+    color: rgb(207, 207, 207);
+}
+select {
+    background-color: #333;
+    color: rgb(207, 207, 207);
+}
+select.form-select {
+    background-color: #333;
+    color: rgb(207, 207, 207);
+    background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3e%3cpath fill=%27none%27 stroke=%27%23CCCCCC%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%272%27 d=%27m2 5 6 6 6-6%27/%3e%3c/svg%3e")
+}
+option {
     background-color: #333;
     color: rgb(207, 207, 207);
 }

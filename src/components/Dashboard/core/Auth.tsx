@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Container, Form, FormGroup, FormLabel, FormText, Modal, Tab, Tabs } from "react-bootstrap";
+import { Button, Container, Form, FormGroup, Modal, Tab, Tabs } from "react-bootstrap";
 
 
 export const DashboardAuth = (props: any) => {
@@ -38,7 +38,7 @@ export const DashboardAuth = (props: any) => {
                         <Form.Label>Email</Form.Label>
                         <Form.Control type="email" placeholder="Enter email"  value={email} onChange={e => setEmail(e.currentTarget.value)}/>
                         <Spacer />
-                        <FormLabel>Password</FormLabel>
+                        <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Password"  value={password} onChange={e => setPassword(e.currentTarget.value)}/>
                         <Spacer />
                         <Button variant="primary" type="submit">Login</Button>
@@ -51,7 +51,7 @@ export const DashboardAuth = (props: any) => {
                         <Form.Label>Email</Form.Label>
                         <Form.Control type="email" placeholder="Enter email"  value={email} onChange={e => setEmail(e.currentTarget.value)}/>
                         <Spacer />
-                        <FormLabel>Password</FormLabel>
+                        <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Password"  value={password} onChange={e => setPassword(e.currentTarget.value)}/>
                         <Spacer />
                         <Form.Label>Admin Secret Key</Form.Label>

@@ -1,23 +1,20 @@
-import React from 'react';
 import { BrowserRouter, Route, Routes, Link, Navigate } from 'react-router-dom';
 
-import logo from './assets/images/logo.svg';
 import './assets/css/App.css';
 
-import HomePage from './pages/HomePage';
 import MyNavbar from './components/Navbars/Navbar';
+import HomePage from './pages/HomePage';
 import Dashboard from './pages/Dashboard';
 
-import UserManager from './helpers/api/portfolio/UserManager';
-import Portfolio from './helpers/api/portfolio/portfolio';
-import github from './helpers/api/github';
+import PortfolioAPI from './helpers/api/portfolio/PortfolioAPI';
+import GithubAPI from './helpers/api/github/GithubAPI';
 
 
 function App() {
 
   const apis = {
-    portfolio: Portfolio(),
-    github,
+    portfolio: PortfolioAPI(),
+    github: GithubAPI(),
   }
 
   let props = {

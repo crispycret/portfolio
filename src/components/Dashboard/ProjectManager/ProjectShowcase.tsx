@@ -1,23 +1,29 @@
-
+import React from 'react';
 import { useEffect, useState } from 'react'
-import { Link, NavLink} from 'react-router-dom';
 import { Container, ListGroup } from 'react-bootstrap';
+
 import ProjectEntry from './ProjectEntry';
 import useIsMobile from '../../../helpers/hooks/useIsMobile';
-import React from 'react';
 
 
+
+export type Props = {
+    apis: any,
+    
+}
 
 export const ProjectShowcase = (props: any) => {
 
     // const manager = props.projectManager;
 
-    const [isMobile, isNotMobile] = useIsMobile()
+    const {isMobile, isNotMobile} = useIsMobile()
 
     const [elements, setElements] = useState<any>(null)
 
     const [projects, setProjects] = useState<Array<any>>([
-        {
+        {            
+            id: 0,
+            version: "0.1.0",
             title: "1 Github API Buffer",
             description: "A read only flask api for a single user. The API acts as a buffer between the true Github API and allows faster data retriveals by storing the users github data in a seperate database.",
             status: 'completed',
@@ -26,14 +32,18 @@ export const ProjectShowcase = (props: any) => {
             previewUrl: '',
         },
         {
+            id: 1,
+            version: "0.1.0",
             title: "Project 2",
             description: "TESTING.",
             status: 'completed',
-            githubUrl: 'https://github.com/crispycret/github-api',
-            websiteUrl: 'https://github.com/crispycret/github-api',
+            githubUrl: 'https://github.com/crispycret/',
+            websiteUrl: 'https://github.com/crispycret/',
             previewUrl: '',
         },
         {
+            id: 2,
+            version: "0.1.0",
             title: "Project 3",
             description: "TESTING Again.",
             status: 'completed',
@@ -42,6 +52,8 @@ export const ProjectShowcase = (props: any) => {
             previewUrl: '',
         },
         {
+            id: 3,
+            version: "0.1.0",
             title: "Project 4",
             description: "And Again.",
             status: 'completed',
@@ -50,6 +62,14 @@ export const ProjectShowcase = (props: any) => {
             previewUrl: '',
         },
     ])
+
+
+
+    const setProject = (index:number, project:any) => {
+        const newProjects = [...projects];
+        newProjects[index] = project
+        setProjects(newProjects)
+    }
 
     
 
@@ -61,7 +81,6 @@ export const ProjectShowcase = (props: any) => {
     // Event handler for when the user starts dragging a project.
     const onDragStart = (e: any, index: number) => {
         // Store the index of the project being dragged
-        console.log(`Start Dragging ${index}`)
         setDragging(index)
     }
 
@@ -71,12 +90,8 @@ export const ProjectShowcase = (props: any) => {
         // Prevent default action
         e.preventDefault()
 
-        console.log(`dragging ${dragging} over ${index}`)
-
         // Check if the project is not already in the desired position
         if (index !== dragging && dragging !== null) {
-
-            console.log("Switching")
 
             // create a new copy of the projects list
             const newProjects:Array<any> = [...projects];
@@ -89,7 +104,6 @@ export const ProjectShowcase = (props: any) => {
 
             // Update the dragging index to reflect the projects new location (Prevents Looping). 
             setDragging(index)
-            console.log("Switching Done")
         }
     }
 
@@ -97,16 +111,17 @@ export const ProjectShowcase = (props: any) => {
     // Event handler for dropping a project.
     const onDrop = (e:any, index:number) => {
         setDragging(null)
-        console.log(`Drop ${index}`)
     }
 
 
-    const create_elements = () => {
+    const create_elements_test = () => {
         setElements(projects.map((project:any, index :number) => {
             return (
+                // <div key={index} />
                 <ProjectEntry key={index}
-                    project={project} 
                     index={index}
+                    project={project}
+                    setProject={setProject}
                     openEditor={props.openEditor} 
                     openDelete={props.openDelete} 
                     draggable
@@ -118,6 +133,29 @@ export const ProjectShowcase = (props: any) => {
             )
         }))
     }
+
+
+
+    const create_elements = () => {
+        setElements(props.apis.portfolio.projectManager.projects.map((project:any, index :number) => {
+            return (
+                // <div key={index} />
+                <ProjectEntry key={index}
+                    index={index}
+                    project={project}
+                    setProject={setProject}
+                    openEditor={props.openEditor} 
+                    openDelete={props.openDelete} 
+                    draggable
+                    onDragStart={onDragStart}
+                    onDragOver={onDragOver}
+                    onDrop={onDrop}
+                    descriptionLimit={isMobile ? 80 : undefined}
+                />
+            )
+        }))
+    }
+
 
     useEffect(() => {
         create_elements()

@@ -1,7 +1,5 @@
-import { PropertySafetyFilled } from "@ant-design/icons"
 import axios from "axios"
 import { useEffect, useState } from "react"
-import portfolio from "./portfolio"
 
 const sign = require('jwt-encode')
 
@@ -10,7 +8,7 @@ const sign = require('jwt-encode')
  * @param props 
  * @returns 
  */
-export const UserManager = (props: any) => {
+export const UserManagerAPI = (props: any) => {
 
     /**
      * states belonging to UserManager
@@ -19,7 +17,7 @@ export const UserManager = (props: any) => {
     let [validToken, setValidToken] = useState(false)
 
     const getToken = () => {return props.cookies.get('Authorization')}
-    const hasToken = () => { return getToken() != undefined }
+    const hasToken = () => { return getToken() !== undefined }
     const hasValidToken = () => { return validToken && hasToken() }
 
     /**
@@ -27,16 +25,16 @@ export const UserManager = (props: any) => {
      * @param data -> porfolio api response data representing user data and authentication token.
      */
     const set = (data:any) => {
-        if (user != data.user) setUser(data.user)
-        if (validToken == false) setValidToken(true)
+        if (user !== data.user) setUser(data.user)
+        if (validToken === false) setValidToken(true)
         props.cookies.set('user', data.user)
         props.cookies.set('Authorization', data.Authorization)
         props.headers.setAuthToken(data.Authorization)
     }
 
     const clear = () => {
-        if (user != null) setUser(null)
-        if (validToken == true) setValidToken(false)
+        if (user !== null) setUser(null)
+        if (validToken === true) setValidToken(false)
         props.cookies.remove('user')
         props.cookies.remove('validToken')
         props.cookies.remove('Authorization')
@@ -44,7 +42,7 @@ export const UserManager = (props: any) => {
     }
 
     const register = async(email: string, password: string, secret_key:string) => {
-        if (user != null) return
+        if (user !== null) return
         let _data = {username: 'admin', email, password}
         let _token = sign(_data, secret_key)
         let headers = {'Authorization': _token}
@@ -66,7 +64,7 @@ export const UserManager = (props: any) => {
             clear()
             return res
         }
-        if (res.data.status != 200) {
+        if (res.data.status !== 200) {
             clear()
             return res
         }
@@ -101,12 +99,12 @@ export const UserManager = (props: any) => {
         let res = await props.client.get('/auth/token/validate')
         .catch ((error: any) => {return Promise.reject(error)})
 
-        if (res.status != 200) {
+        if (res.status !== 200) {
             console.log(res)
             clear()
             return res
         }
-        if (res.data.status != 200) {
+        if (res.data.status !== 200) {
             console.log(res)
             clear()
             return res
@@ -116,8 +114,13 @@ export const UserManager = (props: any) => {
         return res
     }
 
+    const applyHeaders = () => {
+        const _token = getToken()
+        if (_token) props.headers.set('Authorization', _token)
+    }
 
     const loadCookies = () => {
+
         if (!getToken()) {
             clear()
             return
@@ -128,9 +131,9 @@ export const UserManager = (props: any) => {
             clear() 
             return
         }
-        
+
+        applyHeaders()
         setUser(user)
-        props.headers.set('Authorization', getToken())
         validateToken()
         return
     }
@@ -151,7 +154,8 @@ export const UserManager = (props: any) => {
         logout,
         hasToken,
         hasValidToken,
-        validateToken
+        validateToken,
+        applyHeaders,
     }
 
 }
@@ -159,4 +163,4 @@ export const UserManager = (props: any) => {
 // export const userManager = UserManager()
 // export default userManager;
 
-export default UserManager;
+export default UserManagerAPI;

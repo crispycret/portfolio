@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
-import useIsMobile from "../../helpers/hooks/useIsMobile";
+import useIsMobile from "../../../helpers/hooks/useIsMobile";
 
 
 type ChildrenProps = {
@@ -9,7 +9,7 @@ type ChildrenProps = {
 };
 export const Content = ({ props, children }: ChildrenProps) => {
 
-    const [isMobile, isNotMobile] = useIsMobile();
+    const {isMobile, isNotMobile} = useIsMobile();
 
  
     /**

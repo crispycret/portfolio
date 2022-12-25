@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { Link, NavLink} from 'react-router-dom';
-import useIsMobile from '../../helpers/hooks/useIsMobile';
+import useIsMobile from '../../../helpers/hooks/useIsMobile';
 
-import '../../assets/css/sidenav.css'
+import '../../../assets/css/sidenav.css'
 
 
 const cdbreact = require('cdbreact'); 
@@ -43,7 +43,7 @@ const {
 
 const Sidebar = (props: any) => {
 
-  const [isMobile, isNotMobile] = useIsMobile()
+  const {isMobile, isNotMobile} = useIsMobile()
 
   const toggle = <i className="fa fa-bars fa-large" onClick={(e:any) => props.setsidebarToggled(!props.sidebarToggled)}></i>
 
