@@ -5,17 +5,13 @@ import HomeHeader from "./Header"
 import GithubExtension from "./GithubExtension"
 
 
-export const Home = () => {
-
-   
+export const Home = (props: any) => {
 
     return (
         <div id="home">
-
             <HomeHeader />
             <div className="py-1"></div>
-            <GithubExtension />
-
+            <GithubExtension {...props}/>
         </div>
     )
 }

@@ -1,15 +1,15 @@
+import { useEffect } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap"
 import Project from "./Project"
 
-import imageUrlGithubAPI from '../../assets/images/projects/github-api/sample.png'
 import useIsMobile from "../../helpers/hooks/useIsMobile";
 import GradientText from "../../helpers/utils/GradientText";
-import { useEffect } from "react";
-import github, { Github } from "../../helpers/api/github";
 
-export const Projects = () => {
+import imageUrlGithubAPI from '../../assets/images/projects/github-api/sample.png'
 
-    const [isMobile, isNotMobile] = useIsMobile();
+export const Projects = (props: any) => {
+
+    const {isMobile, isNotMobile} = useIsMobile();
 
     const projects = [
         {
@@ -60,7 +60,7 @@ export const Projects = () => {
         for (const project of projects) {
             let split = project.githubUrl.split('/')
             let repo_name = split[split.length-1]
-            github.get_repo_by_name(repo_name)
+            props.apis.github.get_repo_by_name(repo_name)
         }
     }
 
@@ -81,22 +81,22 @@ export const Projects = () => {
                 {isMobile &&
                 <>
                     <Row>
-                        <Col><Project {...projects[0]}/></Col>
+                        <Col><Project {...props} {...projects[0]}/></Col>
                     </Row>
                     <Row>
-                        <Col><Project {...projects[1]}/></Col>
+                        <Col><Project {...props} {...projects[1]}/></Col>
                     </Row>
                     <Row>
-                        <Col><Project {...projects[2]}/></Col>
+                        <Col><Project {...props} {...projects[2]}/></Col>
                     </Row>
                     <Row>
-                        <Col><Project {...projects[3]}/></Col>
+                        <Col><Project {...props} {...projects[3]}/></Col>
                     </Row>
                     <Row>
-                        <Col><Project {...projects[4]}/></Col>
+                        <Col><Project {...props} {...projects[4]}/></Col>
                     </Row>
                     <Row>
-                        <Col><Project {...projects[0]}/></Col>
+                        <Col><Project {...props} {...projects[0]}/></Col>
                     </Row>
                 </> 
                 }
@@ -104,14 +104,14 @@ export const Projects = () => {
                 {isNotMobile &&
                 <>
                     <Row>
-                        <Col><Project {...projects[0]}/></Col>
-                        <Col><Project {...projects[1]}/></Col>
-                        <Col><Project {...projects[2]}/></Col>
+                        <Col><Project {...props} {...projects[0]}/></Col>
+                        <Col><Project {...props} {...projects[1]}/></Col>
+                        <Col><Project {...props} {...projects[2]}/></Col>
                     </Row>
                     <Row>
-                        <Col><Project {...projects[3]}/></Col>
-                        <Col><Project {...projects[4]}/></Col>
-                        <Col><Project {...projects[0]}/></Col>
+                        <Col><Project {...props} {...projects[3]}/></Col>
+                        <Col><Project {...props} {...projects[4]}/></Col>
+                        <Col><Project {...props} {...projects[0]}/></Col>
                     </Row>
                 </> 
                 }

@@ -19,11 +19,16 @@ const useIsMobile = () => {
         }
     }, []);
 
+    
+    const ifMobileDefault = () => {return isMobile ? 'mobile' : ''}
+    const ifMobile = (cls:string) => {return isMobile ? cls : ''}
 
-    return [
+    return {
         isMobile,
-        isNotMobile
-    ]
+        isNotMobile,
+        ifMobile,
+        ifMobileDefault,
+    }
 }
 
 export default useIsMobile

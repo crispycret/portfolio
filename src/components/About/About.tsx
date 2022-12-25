@@ -7,8 +7,7 @@ import GradientText from "../../helpers/utils/GradientText"
 
 export const About = () => {
     
-    const [isMobile, isNotMobile] = useIsMobile()
-
+    const {isMobile, isNotMobile} = useIsMobile()
     const [bodyFontSize, setBodyFontSize] = useState(12)
 
     useEffect(() => {

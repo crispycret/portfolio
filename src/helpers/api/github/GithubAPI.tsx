@@ -3,7 +3,6 @@ import axios, { AxiosInstance, AxiosResponse } from 'axios'
 // export const axios = require('axios');
 
 
-
 /**
  * Given a repo retireved from the api, return it's latest commit.
  * @param repo 
@@ -60,10 +59,11 @@ export interface GithubInterface {
     get_repo_by_name: (name: string) => Promise<AxiosResponse<any, any>>; 
 }
 
-export const Github = () => {
+export const GithubAPI = () => {
 
     let client_config = {
-        baseURL: process.env.REACT_APP_GITHUB_API_ENDPOINT,
+        // baseURL: process.env.REACT_APP_GITHUB_API_ENDPOINT,
+        baseURL: 'http://127.0.0.1:5001',
         headers: {}
     }
 
@@ -113,4 +113,7 @@ export const Github = () => {
 }
 
 
-export default Github()
+// export const github = GithubAPI()
+// export default github;
+
+export default GithubAPI;

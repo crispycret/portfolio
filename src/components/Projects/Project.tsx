@@ -5,13 +5,14 @@ import { FaGithub, FaCross, FaCheck, FaCheckCircle } from "react-icons/fa"
 import { ImCross } from 'react-icons/im'
 import { AiOutlineLink } from 'react-icons/ai'
 
-import github, { get_newest_commit } from "../../helpers/api/github"
 import useIsMobile from "../../helpers/hooks/useIsMobile"
-import GradientText from "../../helpers/utils/GradientText"
 import { timeAgo } from "../../helpers/utils/time"
+
+import { get_newest_commit } from "../../helpers/api/github/GithubAPI"
 
 
 export interface ProjectInterface {
+    apis: any,
     name: string,
     summary: string,
     completed: boolean,
@@ -22,7 +23,7 @@ export interface ProjectInterface {
 
 export const Project = (props:ProjectInterface) => {
 
-    const [isMobile, isNotMobile] = useIsMobile()
+    const {isMobile, isNotMobile} = useIsMobile()
     
     const default_date = Date.UTC(1999, 12, 31, 23, 59, 59)
 
@@ -32,12 +33,12 @@ export const Project = (props:ProjectInterface) => {
         let split = props.githubUrl.split('/')
         let repo_name = split[split.length-1]
 
-        github.get_repo_by_name(repo_name).then(response => {
+        props.apis.github.get_repo_by_name(repo_name).then((response: any) => {
             let repo = response.data
             let commit = get_newest_commit(repo)
             let time = timeAgo(commit.created_at)
             setUpdatedTime(time)
-        }).catch(error => {
+        }).catch((error: any) => {
             let time = timeAgo(default_date.toString())
             setUpdatedTime(time)
         })

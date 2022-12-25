@@ -6,13 +6,13 @@ import Home from "../components/Home/Home";
 import Projects from "../components/Projects/Projects";
 import About from "../components/About/About";
 
-export const HomePage = () => {
+export const HomePage = (props: any) => {
 
     return (
         <Container id='home-page'>
-            <Home />
-            <Projects />
-            <About />
+            <Home {...props}/>
+            {/* <Projects /> */}
+            {/* <About /> */}
             <div className='my-5'></div>
         </Container>
     )

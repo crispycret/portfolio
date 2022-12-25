@@ -11,7 +11,7 @@ export const MyNavbar = () => {
 
   
     return (
-      <Navbar expand="lg" bg="dark" variant="dark">
+      <Navbar id='top-nav' expand="lg" bg="dark" variant="dark">
         <Container fluid={true} >
           <Navbar.Brand href='#'>Brandon Nadeau</Navbar.Brand>
 

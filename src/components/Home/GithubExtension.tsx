@@ -2,26 +2,27 @@ import { useEffect, useState } from "react";
 import { Card, Col, Container, ListGroup, ListGroupItem, Row } from "react-bootstrap";
 import { FaGithub, FaGithubSquare } from "react-icons/fa";
 
-import Github from "../../helpers/api/github";
-import {get_newest_commit, Repo, Commit} from "../../helpers/api/github";
+import github from "../../helpers/api/github/GithubAPI";
+import {get_newest_commit, Repo, Commit} from "../../helpers/api/github/GithubAPI";
+
 import useIsMobile from "../../helpers/hooks/useIsMobile";
 import { timeAgo } from "../../helpers/utils/time";
 
 
-export const GithubExtension = () => {
+export const GithubExtension = (props: any) => {
 
-    const [isMobile, isNotMobile] = useIsMobile()
+    const {isMobile, isNotMobile} = useIsMobile()
 
     const MINUTE_MS = 60000;
 
     const update = () => {
-        Github.update().then((response) => {
+        props.apis.github.update().then((response: any) => {
             updateSelectedRepo()
         })
     }
 
     const updateSelectedRepo = () => {
-        Github.get_last_worked_on_repos().then(response => {
+        props.apis.github.get_last_worked_on_repos().then((response: any) => {
             let _repos = response.data
             let _repo = _repos[0]
             let _commit = get_newest_commit(_repo)
