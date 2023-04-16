@@ -1,0 +1,63 @@
+[
+  {
+    "title": "CW Plus Walkthrough",
+    "description": "A walkthrough guide for the CosmWasm Plus contracts. This guide will walk you through the process of deploying and interacting with the standard supplied contracts.",
+    "link": "https://github.com/crispycret/cw-plus-walkthrough",
+    "stack": ["Rust", "Blockchain", "CosmWasm"]
+  },
+  {
+      "title": "Fractal Engine",
+      "description": "Another Fractal App Attempt. Both Frontend and backend are supplied in this repo.",
+      "link": "https://github.com/crispycret/fractal-engine",
+      "stack": ["React", "TypeScript", "Python", "Flask", "PostgreSQL", "SQLAlchemy", "HTML", "CSS"]
+    },
+    {
+      "title": "[Android] Fractal Engine",
+      "description": "Mobile Application that allows the generation of fractals like the Mandelbrot, and Serpinski Triangle.",
+      "link": "https://github.com/crispycret/AndroidFractalEngine",
+
+      "stack": ["Java"]
+    },
+    {
+      "title": "Github API [ReadOnly]",
+      "description": "A Flask-based tool to provide secure backend requests to github for the sole purpose of retrieving user and repo data.",
+      "link": "https://github.com/crispycret/github-api",
+      "stack": ["Python", "Flask"]
+    },
+    {
+      "title": "Twilio Verify",
+      "description": "A Flask-based tool that uses twilio for enchanced user authentication during login and registration.",
+      "link": "https://github.com/crispycret/twilio-verify",
+      "stack": ["Python", "Flask", "Twilio"]
+    },
+    {
+      "title": "Flask React Starter",
+      "description": "Kickstart your next Flask and React project. This is a simple starter project that allows you to quickly get started with a Flask and React project.",
+      "link": "https://github.com/crispycret/flask-react-starter",
+      "stack": ["React", "Typescript", "JavaScript", "Python", "Flask", "PostgreSQL", "SQLAlchemy", "HTML", "CSS"]
+    },
+    {
+      "title": "Flask User Auth Starter",
+      "description": "Kickstart your next Flask project with built in user authentication. This is a simple starter project that allows you to quickly get started with a Flask project with built in user authentication.",
+      "link": "https://github.com/crispycret/flask-user-auth",
+      "stack": ["Python", "Flask", "SQLAlchemy", "PostgreSQL"]
+    },
+   {
+      "title": "Blog API",
+      "description": "A Flask-based tool that uses twilio for enchanced user authentication during login and registration.",
+      "link": "https://github.com/crispycret/blog-api",
+      "stack": ["Python", "Flask", "Twilio"]
+    },
+    {
+      "title": "Blog Web App",
+      "description": "A Flask-based tool that uses twilio for enchanced user authentication during login and registration.",
+      "link": "https://github.com/crispycret/blog-api",
+      "stack": ["React", "TypeScript", "JavaScript", "HTML", "CSS"]
+    },
+    {
+      "title": "Flask API",
+      "description": "Supercedes the Flask-User-Auth repo which integrates twilio for enchanced user authentication during login and registration.",
+      "link": "https://github.com/crispycret/flask-api",
+      "stack": ["Python", "Flask", "Twilio", "PostgreSQL", "SQLAlchemy"]
+    }
+  ]
