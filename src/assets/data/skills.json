@@ -68,7 +68,7 @@
   },
   {
     "title": "Git",
-    "iconUrl": "https://raw.githubusercontent.com/crispycret/portfolio/1.0.0/src/assets/images/skills/git.png",
+    "iconUrl": "https://raw.githubusercontent.com/crispycret/portfolio/1.0.0/src/assets/images/skills/github.png",
     "description": "I have experience with JavaScript, React, Node.js, and MongoDB. I have also used Python, Django, SQL, and Git.",
     "years": "6"
   },
