@@ -49,7 +49,7 @@ export const Home = () => {
         </Row>
 
         {/* Skills */}  
-        <Row><SkillSlider showNumSkills={6}/></Row>
+        <Row><SkillSlider showNumSkills={12}/></Row>
         
         {/* Projects */}
         <Row><ProjectSlider /></Row>

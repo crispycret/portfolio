@@ -50,10 +50,10 @@ export const Skill = () => {
 
                         <Col className="col-8 ">
                             <div className="h-75">
-                                <p className="">{skill.description}</p>
+                                <p className="text-start">{skill.description}</p>
                             </div>
                             <Row className="my-auto align-bottom">
-                                <Col className="my-auto "><p>Projects: {projects.length}</p></Col>
+                                {projects.length > 0 && <Col className="my-auto "><p>Projects: {projects.length}</p></Col> }
                                 <Col className="my-auto "><p>Years: { skill.years }</p></Col>
                             </Row>
                         </Col>

@@ -40,16 +40,16 @@ export const ProjectSlider = ({showNumProjects=4, projects}: any) => {
       <Row className="mt-4">
         {projectsList.slice(startIndex, startIndex + showNumProjects).map((project: any) => (
           <Col key={project.title} md={6} className="mb-3">
-                <div className="project-card text-center ">
+                <div className="project-card text-start ">
                   <a className='project-card-link h-80' href={project.link}>
                     <h3>{project.title}</h3>
                     <p>{project.description}</p>
                   </a>
 
-                  <h5 className='mt-3'>Tech Stack</h5>
+                  <h5 className='mt-3 text-center'>Tech Stack</h5>
                   <Row>
                     {project.stack.map((tech: any) => (
-                      <Col key={tech} md={3} className="mx-auto my-auto">
+                      <Col key={tech} md={3} className="mx-auto my-auto text-center">
                           <a href={"/skills/" + tech.toLowerCase()} className="project-card-link">
                             <div className="project-card-column mb-3">
                               <p className="my-auto">{tech}</p>

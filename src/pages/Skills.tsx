@@ -13,7 +13,7 @@ export const Skills = () => {
   return (
     <Container>
       <Routes>
-        <Route path="/" element={<SkillSlider showNumSkills={16} />} />
+        <Route path="/" element={<SkillSlider showNumSkills={24} />} />
         <Route path="/:skill" element={<Skill/>} />     
       </Routes>
     </Container>

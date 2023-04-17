@@ -41,7 +41,7 @@ export const SkillSlider = ({showNumSkills=4, skills}: SkillSlider) => {
       </Row>
       <Row className="mt-4">
         {skills.slice(startIndex, startIndex + showNumSkills).map((skill: any) => (
-            <Col key={skill.title} md={6}>
+            <Col key={skill.title} md={3} className='mt-3'>
                 <a href={"/skills/" + process_name(skill.title)} className="skill-card-column-link">
                     <div className="skill-card-column">
                         <p>{skill.title}</p>

@@ -50,7 +50,7 @@ export const Project = () => {
 
                         <Col className="col-8 ">
                             <div className="h-75">
-                                <p className="">{project.description}</p>
+                                <p className="text-start">{project.description}</p>
                             </div>
                             <Row className="my-auto align-bottom">
                                 <Col className="my-auto "><p>Projects: 8</p></Col>
