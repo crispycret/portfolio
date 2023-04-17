@@ -14,7 +14,7 @@
   },
   {
     "title": "TypeScript",
-    "iconUrl": "https://w7.pngwing.com/pngs/640/199/png-transparent-javascript-logo-html-javascript-logo-angle-text-rectangle-thumbnail.png",
+    "iconUrl": "https://raw.githubusercontent.com/crispycret/portfolio/1.0.0/src/assets/images/skills/typescript.png",
     "description": "I have experience with JavaScript, React, Node.js, and MongoDB. I have also used Python, Django, SQL, and Git.",
     "years": "3"
   },
@@ -25,12 +25,6 @@
     "years": "3"
   },
   {
-    "title": "MongoDB",
-    "iconUrl": "https://w7.pngwing.com/pngs/640/199/png-transparent-javascript-logo-html-javascript-logo-angle-text-rectangle-thumbnail.png",
-    "description": "I have experience with JavaScript, React, Node.js, and MongoDB. I have also used Python, Django, SQL, and Git.",
-    "years": "1"
-  },
-  {
     "title": "Python",
     "iconUrl": "https://raw.githubusercontent.com/crispycret/portfolio/1.0.0/src/assets/images/skills/python.png",
     "description": "I have experience with JavaScript, React, Node.js, and MongoDB. I have also used Python, Django, SQL, and Git.",
@@ -38,25 +32,25 @@
   },
   {
     "title": "Flask",
-    "iconUrl": "https://w7.pngwing.com/pngs/447/294/png-transparent-python-javascript-logo-clojure-python-logo-blue-angle-text-thumbnail.png",
+    "iconUrl": "https://raw.githubusercontent.com/crispycret/portfolio/1.0.0/src/assets/images/skills/flask.png",
     "description": "I have experience with JavaScript, React, Node.js, and MongoDB. I have also used Python, Django, SQL, and Git.",
     "years": "5"
   },
   {
     "title": "PostgreSQL",
-    "iconUrl": "https://icon-library.com/images/postgres-icon/postgres-icon-7.jpg",
+    "iconUrl": "https://raw.githubusercontent.com/crispycret/portfolio/1.0.0/src/assets/images/skills/postgresql.png",
     "description": "I have experience with JavaScript, React, Node.js, and MongoDB. I have also used Python, Django, SQL, and Git.",
     "years": "3"
   },
   {
     "title": "SQLAlchemy",
-    "iconUrl": "https://w7.pngwing.com/pngs/447/294/png-transparent-python-javascript-logo-clojure-python-logo-blue-angle-text-thumbnail.png",
+    "iconUrl": "https://raw.githubusercontent.com/crispycret/portfolio/1.0.0/src/assets/images/skills/flask.png",
     "description": "I have experience with JavaScript, React, Node.js, and MongoDB. I have also used Python, Django, SQL, and Git.",
     "years": "3"
   },
   {
     "title": "Java",
-    "iconUrl": "https://w7.pngwing.com/pngs/447/294/png-transparent-python-javascript-logo-clojure-python-logo-blue-angle-text-thumbnail.png",
+    "iconUrl": "https://raw.githubusercontent.com/crispycret/portfolio/1.0.0/src/assets/images/skills/java.png",
     "description": "I have experience with JavaScript, React, Node.js, and MongoDB. I have also used Python, Django, SQL, and Git.",
     "years": "3"
   },
@@ -68,13 +62,13 @@
   },
   {
     "title": "SQL",
-    "iconUrl": "https://w7.pngwing.com/pngs/640/199/png-transparent-javascript-logo-html-javascript-logo-angle-text-rectangle-thumbnail.png",
+    "iconUrl": "https://raw.githubusercontent.com/crispycret/portfolio/1.0.0/src/assets/images/skills/sql.png",
     "description": "I have experience with JavaScript, React, Node.js, and MongoDB. I have also used Python, Django, SQL, and Git.",
     "years": "6"
   },
   {
     "title": "Git",
-    "iconUrl": "https://w7.pngwing.com/pngs/640/199/png-transparent-javascript-logo-html-javascript-logo-angle-text-rectangle-thumbnail.png",
+    "iconUrl": "https://raw.githubusercontent.com/crispycret/portfolio/1.0.0/src/assets/images/skills/git.png",
     "description": "I have experience with JavaScript, React, Node.js, and MongoDB. I have also used Python, Django, SQL, and Git.",
     "years": "6"
   },
@@ -92,25 +86,25 @@
   },
   {
     "title": "Bootstrap",
-    "iconUrl": "https://w7.pngwing.com/pngs/640/199/png-transparent-javascript-logo-html-javascript-logo-angle-text-rectangle-thumbnail.png",
+    "iconUrl": "https://raw.githubusercontent.com/crispycret/portfolio/1.0.0/src/assets/images/skills/bootstrap.png",
     "description": "I have experience with JavaScript, React, Node.js, and MongoDB. I have also used Python, Django, SQL, and Git.",
     "years": "6"
   },
   {
     "title": "Blockchain",
-    "iconUrl": "https://w7.pngwing.com/pngs/640/199/png-transparent-javascript-logo-html-javascript-logo-angle-text-rectangle-thumbnail.png",
+    "iconUrl": "https://raw.githubusercontent.com/crispycret/portfolio/1.0.0/src/assets/images/skills/blockchain.png",
     "description": "I have experience with JavaScript, React, Node.js, and MongoDB. I have also used Python, Django, SQL, and Git.",
     "years": "1"
   },
   {
     "title": "CosmWasm",
-    "iconUrl": "https://w7.pngwing.com/pngs/640/199/png-transparent-javascript-logo-html-javascript-logo-angle-text-rectangle-thumbnail.png",
+    "iconUrl": "https://raw.githubusercontent.com/crispycret/portfolio/1.0.0/src/assets/images/skills/cosmwasm.png",
     "description": "I have experience with JavaScript, React, Node.js, and MongoDB. I have also used Python, Django, SQL, and Git.",
     "years": "1"
   },
   {
     "title": "Twilio",
-    "iconUrl": "https://toppng.com/uploads/preview/twilio-logo-11609380242jwkoktksba.png",
+    "iconUrl": "https://raw.githubusercontent.com/crispycret/portfolio/1.0.0/src/assets/images/skills/twilio.png",
     "description": "I have experience with JavaScript, React, Node.js, and MongoDB. I have also used Python, Django, SQL, and Git.",
     "years": "1"
   }
